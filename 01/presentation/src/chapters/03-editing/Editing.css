@@ -1,0 +1,372 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 03 · Editing — 写代码：组合工具的力量
+ * CSS prefix: .ed-
+ * ───────────────────────────────────────────────────────────────── */
+
+.ed-scene {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Step 0: 三个工具 ── */
+.ed-tools-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 56px;
+}
+
+.ed-tools-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+.ed-em { color: var(--accent); }
+
+.ed-tools-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ed-tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 36px 40px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  width: 200px;
+  text-align: center;
+  opacity: 0;
+}
+.ed-tool-1 { animation: ed-tool-in 700ms var(--ease-quart) 400ms both; }
+.ed-tool-2 { animation: ed-tool-in 700ms var(--ease-quart) 700ms both; }
+.ed-tool-3 { animation: ed-tool-in 700ms var(--ease-quart) 1000ms both; }
+
+@keyframes ed-tool-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ed-tool-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.ed-tool-name {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+.ed-tool-desc {
+  font-size: 13px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+
+.ed-tool-connector {
+  opacity: 0;
+  animation: ed-conn-in 400ms var(--ease-quart) 600ms both;
+}
+.ed-tool-connector + .ed-tool-card + .ed-tool-connector {
+  animation-delay: 900ms;
+}
+@keyframes ed-conn-in {
+  from { opacity: 0; }
+  to   { opacity: 0.6; }
+}
+
+.ed-tools-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: ed-foot-in 600ms var(--ease-quart) 1400ms both;
+}
+@keyframes ed-foot-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ed-arrow-down {
+  width: 2px;
+  height: 32px;
+  background: var(--accent);
+  position: relative;
+}
+.ed-arrow-down::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--accent);
+}
+
+.ed-compose-label {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+/* ── Step 1: 规划先行流程 ── */
+.ed-plan-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.ed-plan-header {
+  text-align: center;
+  font-size: var(--t-h1);
+}
+
+.ed-plan-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ed-flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+}
+.ed-flow-prompt  { animation: ed-flow-in 600ms var(--ease-quart) 300ms both; }
+.ed-flow-plan    { animation: ed-flow-in 600ms var(--ease-quart) 800ms both; }
+.ed-flow-confirm { animation: ed-flow-in 600ms var(--ease-quart) 1400ms both; }
+.ed-flow-exec    { animation: ed-flow-in 600ms var(--ease-quart) 1900ms both; }
+
+@keyframes ed-flow-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ed-flow-label {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ed-flow-content {
+  padding: 20px 24px;
+  min-width: 200px;
+}
+.ed-flow-text {
+  font-size: 18px;
+  color: var(--text-2);
+}
+
+.ed-plan-card {
+  min-width: 240px;
+}
+.ed-plan-line {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+.ed-plan-fade {
+  color: var(--text-mute);
+}
+
+.ed-flow-arrow {
+  width: 36px;
+  height: 2px;
+  background: var(--rule);
+  position: relative;
+  opacity: 0;
+  animation: ed-arrow-in 400ms var(--ease-quart) 600ms both;
+}
+.ed-flow-arrow:nth-of-type(2) {
+  animation-delay: 1200ms;
+}
+.ed-flow-arrow:nth-of-type(3) {
+  animation-delay: 1700ms;
+}
+@keyframes ed-arrow-in {
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
+}
+
+.ed-flow-check {
+  opacity: 0;
+  animation: ed-check-in 700ms var(--ease-overshoot) 1600ms both;
+}
+@keyframes ed-check-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ed-exec-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 0;
+}
+.ed-exec-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ed-dot-pulse 1.4s var(--ease-soft) infinite;
+}
+.ed-exec-dot:nth-child(2) { animation-delay: 0.2s; }
+.ed-exec-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ed-dot-pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40%           { opacity: 1; transform: scale(1.2); }
+}
+
+/* ── Step 2: commit and push ── */
+.ed-commit-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+  align-items: center;
+}
+
+.ed-commit-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.ed-commit-terminal {
+  width: 580px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  opacity: 0;
+  animation: ed-term-in 800ms var(--ease-quart) 500ms both;
+}
+@keyframes ed-term-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ed-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--rule);
+}
+.ed-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.ed-dot:nth-child(1) { background: #e85d4a; }
+.ed-dot:nth-child(2) { background: #e8a84a; }
+.ed-dot:nth-child(3) { background: #4ae86a; }
+.ed-term-title {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+
+.ed-term-body {
+  padding: 24px;
+}
+.ed-cmd-line {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ed-dollar { color: var(--accent); }
+.ed-cmd { color: var(--text); }
+
+.ed-commit-flow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ed-git-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+}
+.ed-git-1 { animation: ed-git-in 600ms var(--ease-quart) 1200ms both; }
+.ed-git-2 { animation: ed-git-in 600ms var(--ease-quart) 1600ms both; }
+.ed-git-3 { animation: ed-git-in 600ms var(--ease-quart) 2000ms both; }
+.ed-git-4 { animation: ed-git-in 600ms var(--ease-quart) 2400ms both; }
+
+@keyframes ed-git-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ed-git-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.ed-git-4 .ed-git-icon {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.ed-git-label {
+  font-size: 15px;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.ed-git-arrow-sm {
+  width: 28px;
+  height: 2px;
+  background: var(--rule);
+  opacity: 0;
+  animation: ed-git-arrow-in 400ms var(--ease-quart) 1400ms both;
+}
+.ed-git-arrow-sm:nth-of-type(2) {
+  animation-delay: 1800ms;
+}
+.ed-git-arrow-sm:nth-of-type(3) {
+  animation-delay: 2200ms;
+}
+@keyframes ed-git-arrow-in {
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
+}

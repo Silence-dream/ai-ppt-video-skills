@@ -1,0 +1,169 @@
+.cd-stage {
+  width: 1920px;
+  height: 1080px;
+  background: #0a0f1e;
+  color: #f8fafc;
+  font-family: "Noto Serif SC", "Source Han Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Step 0: Strong question hook */
+.cd-hero {
+  text-align: center;
+  max-width: 1400px;
+}
+
+.cd-question {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: #e2e8f0;
+}
+
+.cd-question-emphasis {
+  font-size: 96px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+}
+
+/* Step 1: Gap reveal with impact */
+.cd-gap {
+  text-align: center;
+  max-width: 1200px;
+}
+
+.cd-gap-text {
+  font-size: 56px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-bottom: 32px;
+}
+
+.cd-gap-highlight {
+  font-size: 72px;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 16px 0;
+}
+
+.cd-gap-accent {
+  color: #3b82f6;
+  font-size: 88px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+/* Step 2: Concepts grid */
+.cd-concepts {
+  width: 1400px;
+  text-align: center;
+}
+
+.cd-concepts-title {
+  font-size: 28px;
+  color: #64748b;
+  letter-spacing: 4px;
+  margin-bottom: 64px;
+  font-weight: 500;
+}
+
+.cd-concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.cd-concept-node {
+  padding: 32px 24px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.cd-concept-node:hover {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/* Step 3: Path chain */
+.cd-path {
+  width: 1600px;
+  text-align: center;
+}
+
+.cd-path-title {
+  font-size: 36px;
+  color: #94a3b8;
+  margin-bottom: 64px;
+  font-weight: 500;
+}
+
+.cd-path-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cd-path-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cd-path-node {
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #f1f5f9;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+}
+
+.cd-path-arrow {
+  font-size: 36px;
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* Step 4: Transition to LLM */
+.cd-transition {
+  text-align: center;
+}
+
+.cd-transition-label {
+  font-size: 24px;
+  color: #64748b;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+
+.cd-transition-main {
+  font-size: 140px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -6px;
+  line-height: 1;
+  margin: 16px 0;
+}
+
+.cd-transition-sub {
+  font-size: 42px;
+  color: #3b82f6;
+  font-weight: 600;
+}

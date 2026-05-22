@@ -1,0 +1,535 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 06 · Protips — 快捷键与 SDK
+ * CSS prefix: .pt-
+ * ───────────────────────────────────────────────────────────────── */
+
+.pt-scene {
+  position: absolute;
+  inset: 0;
+}
+.pt-em { color: var(--accent); }
+
+/* ── Step 0: Shift+Tab ── */
+.pt-key-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.pt-key-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.pt-key-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.pt-key-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: pt-key-in 800ms var(--ease-quart) 400ms both;
+}
+@keyframes pt-key-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.pt-key-cap {
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  border-bottom: 3px solid var(--text-faint);
+  border-radius: var(--r-sm);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+.pt-key-shift {
+  min-width: 120px;
+}
+.pt-key-tab {
+  min-width: 100px;
+  border-bottom-color: var(--accent);
+}
+.pt-key-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.pt-key-plus {
+  font-size: 28px;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+}
+
+.pt-key-result {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 900ms both;
+}
+@keyframes pt-result-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pt-toggle-track {
+  width: 56px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 14px;
+  position: relative;
+}
+.pt-toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--surface);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+.pt-toggle-label {
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pt-key-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 1300ms both;
+}
+.pt-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: var(--text-2);
+}
+.pt-detail-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.pt-dot-yellow { background: #e8a84a; }
+.pt-dot-green  { background: #4ae86a; }
+
+/* ── Step 1: ! bash 模式 ── */
+.pt-bash-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+  align-items: center;
+}
+
+.pt-bash-header {
+  text-align: center;
+  font-size: var(--t-h2);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 4px;
+}
+.pt-bang {
+  font-size: clamp(80px, 8vw, 120px);
+  color: var(--accent);
+  line-height: 0.9;
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.pt-bash-terminal {
+  width: 520px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  opacity: 0;
+  animation: pt-term-in 700ms var(--ease-quart) 500ms both;
+}
+@keyframes pt-term-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pt-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--rule);
+}
+.pt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.pt-dot:nth-child(1) { background: #e85d4a; }
+.pt-dot:nth-child(2) { background: #e8a84a; }
+.pt-dot:nth-child(3) { background: #4ae86a; }
+.pt-term-title {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+
+.pt-term-body {
+  padding: 20px 24px;
+}
+
+.pt-bash-cmd {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 16px;
+}
+.pt-prompt-char {
+  color: var(--accent);
+  margin-right: 10px;
+}
+.pt-bang-char {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 26px;
+  margin-right: 6px;
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+.pt-cmd-text {
+  color: var(--text);
+}
+
+.pt-bash-output {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+  line-height: 1.7;
+  opacity: 0;
+  animation: pt-output-in 500ms var(--ease-quart) 1000ms both;
+}
+.pt-out-2 {
+  animation-delay: 1300ms;
+}
+@keyframes pt-output-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.pt-out-pass {
+  color: #4ae86a;
+  font-weight: 700;
+}
+
+.pt-bash-note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 1600ms both;
+}
+.pt-note-arrow {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+.pt-note-text {
+  font-size: 17px;
+  color: var(--text-2);
+}
+
+/* ── Step 2: Escape ── */
+.pt-esc-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.pt-esc-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.pt-esc-demo {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.pt-esc-key-cap {
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  border-bottom: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  padding: 20px 36px;
+  opacity: 0;
+  animation: pt-key-in 700ms var(--ease-quart) 400ms both;
+}
+.pt-esc-key-cap .pt-key-label {
+  font-size: 26px;
+}
+
+.pt-esc-scene-visual {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 800ms both;
+}
+
+.pt-esc-code-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+}
+.pt-line-active { color: var(--text-2); }
+.pt-line-stopped {
+  color: var(--accent);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+}
+.pt-line-faded { color: var(--text-faint); }
+
+.pt-esc-stop-indicator {
+  opacity: 0;
+  animation: pt-stop-in 400ms var(--ease-quart) 1200ms both;
+}
+@keyframes pt-stop-in {
+  from { opacity: 0; transform: scale(1.4); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.pt-esc-tips {
+  display: flex;
+  gap: 36px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 1500ms both;
+}
+.pt-esc-tip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: var(--text-2);
+}
+.pt-esc-badge {
+  font-size: 14px;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Step 3: SDK ── */
+.pt-sdk-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+  align-items: center;
+}
+
+.pt-sdk-header {
+  text-align: center;
+  font-size: var(--t-h2);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 8px;
+}
+.pt-sdk-title {
+  font-size: clamp(56px, 5vw, 80px);
+  color: var(--accent);
+}
+
+.pt-sdk-terminal {
+  width: 620px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  opacity: 0;
+  animation: pt-term-in 700ms var(--ease-quart) 500ms both;
+}
+
+.pt-sdk-body {
+  padding: 24px 28px;
+}
+.pt-sdk-cmd {
+  font-size: 20px;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+.pt-sdk-cmd:first-child { animation: pt-sdk-line-in 500ms var(--ease-quart) 800ms both; }
+.pt-sdk-2 { animation: pt-sdk-line-in 500ms var(--ease-quart) 1100ms both; }
+.pt-sdk-3 { animation: pt-sdk-line-in 500ms var(--ease-quart) 1400ms both; }
+@keyframes pt-sdk-line-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.pt-sdk-cmd-text {
+  color: var(--text);
+}
+.pt-sdk-indent {
+  margin-left: 28px;
+}
+.pt-flag {
+  color: var(--accent);
+  font-weight: 600;
+}
+.pt-str {
+  color: #4ae86a;
+}
+
+.pt-sdk-desc {
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 14px;
+  opacity: 0;
+  animation: pt-result-in 600ms var(--ease-quart) 1700ms both;
+}
+
+/* ── Step 4: 管道 + CI ── */
+.pt-pipe-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.pt-pipe-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.pt-pipe-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pt-pipe-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+}
+.pt-pipe-1 { animation: pt-pipe-in 600ms var(--ease-quart) 300ms both; }
+.pt-pipe-2 { animation: pt-pipe-in 600ms var(--ease-quart) 700ms both; }
+.pt-pipe-3 { animation: pt-pipe-in 600ms var(--ease-quart) 1100ms both; }
+
+@keyframes pt-pipe-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pt-pipe-icon {
+  width: 80px;
+  height: 56px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 600;
+}
+.pt-pipe-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-soft);
+}
+
+.pt-pipe-label {
+  font-size: 15px;
+  color: var(--text-mute);
+}
+
+.pt-pipe-connector {
+  width: 40px;
+  height: 2px;
+  background: var(--rule);
+  position: relative;
+  opacity: 0;
+  animation: pt-conn-in 400ms var(--ease-quart) 500ms both;
+}
+.pt-pipe-flow .pt-pipe-node:nth-child(3) ~ .pt-pipe-connector {
+  animation-delay: 900ms;
+}
+@keyframes pt-conn-in {
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
+}
+
+.pt-pipe-examples {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.pt-pipe-example {
+  padding: 20px 28px;
+  width: 320px;
+  opacity: 0;
+}
+.pt-ex-1 { animation: pt-ex-in 600ms var(--ease-quart) 1400ms both; }
+.pt-ex-2 { animation: pt-ex-in 600ms var(--ease-quart) 1700ms both; }
+@keyframes pt-ex-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pt-ex-label {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.pt-ex-text {
+  font-size: 16px;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+}

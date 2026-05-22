@@ -1,0 +1,289 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 04 · Iterate — 最值钱的思路：给 Claude 反馈
+ * CSS prefix: .it-
+ * ───────────────────────────────────────────────────────────────── */
+
+.it-scene {
+  position: absolute;
+  inset: 0;
+}
+.it-em { color: var(--accent); }
+
+/* ── Step 0: 反馈循环 ── */
+.it-loop-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.it-loop-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 循环环 */
+.it-loop-ring {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+.it-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.it-ring-track {
+  opacity: 0.3;
+}
+
+.it-ring-arc {
+  transform-origin: center;
+  animation: it-ring-spin 4s linear infinite;
+}
+@keyframes it-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.it-ring-arrow {
+  transform-origin: 280px 160px;
+  animation: it-ring-spin 4s linear infinite;
+}
+
+/* 循环节点 */
+.it-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.it-node-exec {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: it-node-in 600ms var(--ease-quart) 400ms both;
+}
+.it-node-check {
+  bottom: 40px;
+  right: -20px;
+  opacity: 0;
+  animation: it-node-in 600ms var(--ease-quart) 700ms both;
+}
+.it-node-feedback {
+  bottom: 40px;
+  left: -20px;
+  opacity: 0;
+  animation: it-node-in 600ms var(--ease-quart) 1000ms both;
+}
+
+@keyframes it-node-in {
+  from { opacity: 0; transform: translateX(-50%) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+.it-node-check,
+.it-node-feedback {
+  animation-name: it-node-in-simple;
+}
+@keyframes it-node-in-simple {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.it-node-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.it-node-label {
+  font-size: 16px;
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+.it-tools-row {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  animation: it-tools-in 600ms var(--ease-quart) 1400ms both;
+}
+@keyframes it-tools-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.it-tool-badge {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Step 1: 迭代轮次 ── */
+.it-iter-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.it-iter-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.it-rounds {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.it-round {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+}
+.it-round-1 { animation: it-round-in 700ms var(--ease-quart) 300ms both; }
+.it-round-2 { animation: it-round-in 700ms var(--ease-quart) 900ms both; }
+.it-round-3 { animation: it-round-in 700ms var(--ease-quart) 1500ms both; }
+
+@keyframes it-round-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.it-round-num {
+  font-size: clamp(56px, 5vw, 80px);
+  line-height: 0.9;
+  color: var(--text-faint);
+}
+.it-num-success {
+  color: var(--accent);
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.it-round-content {
+  padding: 28px 32px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.it-round-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.it-preview-bar {
+  height: 8px;
+  border-radius: 4px;
+}
+.it-bar-short {
+  width: 60%;
+  background: var(--text-faint);
+  opacity: 0.3;
+}
+.it-bar-wrong {
+  width: 80%;
+  background: #e85d4a;
+  opacity: 0.5;
+}
+.it-bar-ok {
+  width: 85%;
+  background: #e8a84a;
+  opacity: 0.5;
+}
+.it-bar-good {
+  width: 95%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.it-round-fail {
+  border-color: rgba(232, 93, 74, 0.3);
+}
+.it-round-mid {
+  border-color: rgba(232, 168, 74, 0.3);
+}
+.it-round-pass {
+  border-color: var(--accent-soft);
+}
+
+.it-round-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.it-status-fail { color: #e85d4a; }
+.it-status-mid  { color: #e8a84a; }
+.it-status-pass { color: var(--accent); }
+
+.it-round-arrow {
+  width: 32px;
+  height: 2px;
+  background: var(--rule);
+  position: relative;
+  opacity: 0;
+  animation: it-arrow-in 400ms var(--ease-quart) 700ms both;
+}
+.it-rounds .it-round:nth-child(3) ~ .it-round-arrow {
+  animation-delay: 1300ms;
+}
+@keyframes it-arrow-in {
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
+}
+
+/* 应用领域 */
+.it-domains {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: it-domains-in 600ms var(--ease-quart) 2000ms both;
+}
+@keyframes it-domains-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.it-domain {
+  font-size: 14px;
+  color: var(--text-mute);
+}
+.it-domain-dot {
+  color: var(--text-faint);
+  font-size: 20px;
+}

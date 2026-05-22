@@ -1,0 +1,190 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 07 · Poweruser — 高手玩法：并行会话
+ * CSS prefix: .pu-
+ * ───────────────────────────────────────────────────────────────── */
+
+.pu-scene {
+  position: absolute;
+  inset: 0;
+}
+.pu-em { color: var(--accent); }
+
+/* ── Step 0: tmux 并行网格 ── */
+.pu-parallel-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+}
+
+.pu-parallel-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.pu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pu-session {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  opacity: 0;
+}
+.pu-session-1 { animation: pu-sess-in 600ms var(--ease-quart) 400ms both; }
+.pu-session-2 { animation: pu-sess-in 600ms var(--ease-quart) 600ms both; }
+.pu-session-3 { animation: pu-sess-in 600ms var(--ease-quart) 800ms both; }
+.pu-session-4 { animation: pu-sess-in 600ms var(--ease-quart) 1000ms both; }
+
+@keyframes pu-sess-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.pu-sess-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--rule);
+}
+.pu-sess-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.pu-sess-dot:nth-child(1) { background: #e85d4a; }
+.pu-sess-dot:nth-child(2) { background: #e8a84a; }
+.pu-sess-dot:nth-child(3) { background: #4ae86a; }
+.pu-sess-title {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.03em;
+}
+
+.pu-sess-body {
+  padding: 16px 18px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text);
+  min-height: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.pu-sess-prompt {
+  color: var(--accent);
+  margin-right: 8px;
+}
+.pu-sess-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  animation: pu-blink 1s step-end infinite;
+}
+.pu-cursor-2 { animation-delay: 0.25s; }
+.pu-cursor-3 { animation-delay: 0.5s; }
+.pu-cursor-4 { animation-delay: 0.75s; }
+
+@keyframes pu-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.pu-sess-status {
+  width: 100%;
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-top: 8px;
+}
+
+.pu-tools-hint {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  animation: pu-hint-in 600ms var(--ease-quart) 1400ms both;
+}
+@keyframes pu-hint-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Step 1: 80% + 收尾 ── */
+.pu-finale-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.pu-stat-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pu-stat-num {
+  font-size: clamp(120px, 12vw, 200px);
+  color: var(--accent);
+  text-shadow: 0 0 100px var(--accent-glow);
+  line-height: 0.85;
+  opacity: 0;
+  animation: pu-stat-in 1000ms var(--ease-expo) 200ms both;
+}
+@keyframes pu-stat-in {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.pu-stat-label {
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.pu-finale-rule {
+  width: 120px;
+  opacity: 0;
+  animation: pu-rule-in 600ms var(--ease-quart) 1200ms both;
+}
+@keyframes pu-rule-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 0.4; transform: scaleX(1); }
+}
+
+.pu-cta {
+  text-align: center;
+}
+.pu-cta-text {
+  font-size: clamp(40px, 4.5vw, 68px);
+  color: var(--text);
+  letter-spacing: 0.02em;
+}

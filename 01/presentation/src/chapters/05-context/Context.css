@@ -1,0 +1,324 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 05 · Context — 上下文管理：CLAUDE.md
+ * CSS prefix: .ct-
+ * ───────────────────────────────────────────────────────────────── */
+
+.ct-scene {
+  position: absolute;
+  inset: 0;
+}
+.ct-em { color: var(--accent); }
+
+/* ── Step 0: 根目录 CLAUDE.md ── */
+.ct-root-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.ct-root-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--t-h2);
+}
+
+.ct-filename {
+  font-size: clamp(64px, 6vw, 100px);
+  color: var(--accent);
+  text-shadow: 0 0 60px var(--accent-glow);
+  opacity: 0;
+  animation: ct-fname-in 900ms var(--ease-quart) 500ms both;
+}
+@keyframes ct-fname-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 目录树 */
+.ct-tree {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  padding: 28px 36px;
+  min-width: 480px;
+  opacity: 0;
+  animation: ct-tree-in 700ms var(--ease-quart) 900ms both;
+}
+@keyframes ct-tree-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ct-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 18px;
+  color: var(--text-2);
+}
+.ct-tree-root {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.ct-tree-indent {
+  display: inline-block;
+  width: 24px;
+  border-left: 1px solid var(--rule);
+  height: 100%;
+  margin-left: 8px;
+}
+.ct-tree-icon {
+  font-size: 12px;
+  color: var(--text-mute);
+  width: 20px;
+  text-align: center;
+  letter-spacing: 0;
+}
+.ct-file-icon {
+  color: var(--accent);
+  font-weight: 700;
+}
+.ct-tree-name {
+  flex: 1;
+}
+.ct-file-name {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ct-tree-highlight {
+  position: relative;
+}
+.ct-tree-highlight::before {
+  content: "";
+  position: absolute;
+  inset: 2px -8px;
+  background: var(--accent-soft);
+  border-radius: var(--r-xs);
+  z-index: -1;
+}
+
+.ct-tree-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+}
+.ct-badge-auto {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+}
+.ct-badge-ondemand {
+  color: var(--text-mute);
+  border: 1px solid var(--rule);
+}
+
+.ct-root-hint {
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 13px;
+  opacity: 0;
+  animation: ct-hint-in 600ms var(--ease-quart) 1400ms both;
+}
+@keyframes ct-hint-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Step 1: 文件内容 ── */
+.ct-content-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+  align-items: center;
+}
+
+.ct-content-header {
+  text-align: center;
+  font-size: var(--t-h2);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 8px;
+}
+.ct-filename-sm {
+  font-size: clamp(36px, 3.5vw, 52px);
+  color: var(--accent);
+}
+
+.ct-content-card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  padding: 36px 44px;
+  width: 600px;
+  max-width: 100%;
+}
+.ct-content-section {
+  padding: 16px 0;
+  opacity: 0;
+}
+.ct-section-1 { animation: ct-section-in 600ms var(--ease-quart) 400ms both; }
+.ct-section-2 { animation: ct-section-in 600ms var(--ease-quart) 800ms both; }
+.ct-section-3 { animation: ct-section-in 600ms var(--ease-quart) 1200ms both; }
+
+@keyframes ct-section-in {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ct-section-label {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.ct-section-code {
+  font-size: 18px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.ct-section-text {
+  font-size: 18px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.ct-content-rule {
+  opacity: 0.3;
+}
+
+.ct-content-tip {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: center;
+  opacity: 0;
+  animation: ct-hint-in 600ms var(--ease-quart) 1600ms both;
+}
+
+/* ── Step 2: 子目录 ── */
+.ct-nested-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+}
+
+.ct-nested-header {
+  text-align: center;
+  font-size: var(--t-h1);
+}
+
+.ct-tree-nested {
+  min-width: 520px;
+  opacity: 0;
+  animation: ct-tree-in 700ms var(--ease-quart) 400ms both;
+}
+
+.ct-tree-nested-item {
+  opacity: 0;
+  animation: ct-nested-in 600ms var(--ease-quart) both;
+}
+.ct-tree-nested-item:nth-of-type(1) { animation-delay: 1000ms; }
+.ct-tree-nested-item:nth-of-type(2) { animation-delay: 1400ms; }
+
+@keyframes ct-nested-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ct-nested-explain {
+  display: flex;
+  gap: 32px;
+  opacity: 0;
+  animation: ct-hint-in 600ms var(--ease-quart) 1800ms both;
+}
+.ct-explain-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-2);
+}
+.ct-dot-ondemand {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-mute);
+}
+
+/* ── Step 3: 企业配置 ── */
+.ct-enterprise-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 56px;
+}
+
+.ct-enterprise-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.ct-enterprise-cards {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+}
+
+.ct-ent-card {
+  padding: 32px 36px;
+  width: 240px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+}
+.ct-ent-1 { animation: ct-ent-in 700ms var(--ease-quart) 400ms both; }
+.ct-ent-2 { animation: ct-ent-in 700ms var(--ease-quart) 650ms both; }
+.ct-ent-3 { animation: ct-ent-in 700ms var(--ease-quart) 900ms both; }
+
+@keyframes ct-ent-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ct-ent-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ct-ent-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+.ct-ent-desc {
+  font-size: 13px;
+  color: var(--text-mute);
+  letter-spacing: 0.03em;
+}

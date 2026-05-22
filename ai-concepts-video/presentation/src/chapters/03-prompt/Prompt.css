@@ -1,0 +1,216 @@
+.prompt-stage {
+  width: 1920px;
+  height: 1080px;
+  background: #0a0f1e;
+  color: #f8fafc;
+  font-family: "Noto Serif SC", "Source Han Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero with command icon */
+.prompt-hero {
+  text-align: center;
+}
+
+.prompt-label {
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #64748b;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.prompt-title {
+  font-size: 140px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -6px;
+  line-height: 1;
+}
+
+.prompt-subtitle {
+  font-size: 36px;
+  color: #94a3b8;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.prompt-command-icon {
+  margin-top: 48px;
+}
+
+.command-svg {
+  width: 100px;
+  height: 60px;
+}
+
+/* Definition */
+.prompt-def {
+  text-align: center;
+  max-width: 900px;
+}
+
+.prompt-text {
+  font-size: 56px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.prompt-desc {
+  margin-top: 24px;
+  font-size: 36px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+/* 5 Elements grid */
+.prompt-elements {
+  width: 1100px;
+  text-align: center;
+}
+
+.prompt-elements-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.prompt-element-card {
+  padding: 32px 24px;
+  background: #1e293b;
+  border: 2px solid #3b82f6;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.prompt-element-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.prompt-element-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+/* Vague prompt - chaos */
+.prompt-vague {
+  text-align: center;
+  max-width: 800px;
+}
+
+.prompt-vague-text {
+  font-size: 48px;
+  font-weight: 700;
+  color: #f87171;
+  margin: 32px 0;
+  padding: 24px 48px;
+  background: #1e293b;
+  border: 2px solid #f87171;
+  border-radius: 12px;
+}
+
+.prompt-vague-result {
+  font-size: 32px;
+  color: #94a3b8;
+}
+
+/* Clear prompt - focused */
+.prompt-clear {
+  text-align: center;
+  max-width: 900px;
+}
+
+.prompt-clear-text {
+  font-size: 32px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 32px 0;
+  padding: 32px 48px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 16px;
+  line-height: 1.6;
+}
+
+.prompt-clear-result {
+  margin-top: 32px;
+  font-size: 36px;
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* Comparison */
+.prompt-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: 1100px;
+}
+
+.prompt-compare-item {
+  padding: 40px 32px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.prompt-compare-item.vague {
+  background: #1e293b;
+  border: 2px solid #f87171;
+  opacity: 0.8;
+}
+
+.prompt-compare-item.clear {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+  border: 2px solid #3b82f6;
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.3);
+}
+
+.prompt-compare-label {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.prompt-compare-item.clear .prompt-compare-label {
+  color: #3b82f6;
+}
+
+.prompt-compare-text {
+  font-size: 24px;
+  color: #e2e8f0;
+  margin: 24px 0;
+  line-height: 1.5;
+}
+
+.prompt-compare-outcome {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+/* Final insight */
+.prompt-insight {
+  text-align: center;
+  max-width: 1000px;
+}
+
+.prompt-insight-text {
+  font-size: 42px;
+  color: #94a3b8;
+}
+
+.prompt-insight-highlight {
+  margin-top: 24px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #3b82f6;
+}

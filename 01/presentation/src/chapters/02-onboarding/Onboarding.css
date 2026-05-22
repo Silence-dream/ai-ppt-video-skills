@@ -1,0 +1,383 @@
+/* ─────────────────────────────────────────────────────────────────
+ * Chapter 02 · Onboarding — 最佳起点：代码库问答
+ * CSS prefix: .ob-
+ * ───────────────────────────────────────────────────────────────── */
+
+.ob-scene {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Step 0: 空 prompt ── */
+.ob-prompt-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 48px;
+}
+
+.ob-terminal {
+  width: 640px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  opacity: 0;
+  animation: ob-term-in 800ms var(--ease-quart) 200ms both;
+}
+@keyframes ob-term-in {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.ob-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--rule);
+}
+.ob-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.ob-dot:nth-child(1) { background: #e85d4a; }
+.ob-dot:nth-child(2) { background: #e8a84a; }
+.ob-dot:nth-child(3) { background: #4ae86a; }
+.ob-term-title {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+.ob-term-body {
+  padding: 28px 28px 36px;
+}
+.ob-prompt-line {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.ob-dollar {
+  color: var(--accent);
+  margin-right: 10px;
+}
+.ob-input-line {
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+.ob-cursor-block {
+  display: block;
+  width: 14px;
+  height: 30px;
+  background: var(--accent);
+  animation: ob-blink 1s step-end infinite;
+}
+@keyframes ob-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.ob-confused {
+  text-align: center;
+}
+.ob-confused-text {
+  font-size: clamp(48px, 5vw, 72px);
+  color: var(--text-mute);
+}
+
+.ob-hint {
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 14px;
+}
+
+/* ── Step 1: 入职时间对比 ── */
+.ob-time-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 56px;
+}
+
+.ob-time-header {
+  font-size: 16px;
+}
+
+.ob-time-compare {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.ob-time-before,
+.ob-time-after {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ob-time-num {
+  font-size: clamp(100px, 10vw, 160px);
+  line-height: 0.9;
+}
+.ob-num-before {
+  color: var(--text-faint);
+  opacity: 0;
+  animation: ob-num-in 800ms var(--ease-quart) 200ms both;
+}
+.ob-num-after {
+  color: var(--accent);
+  text-shadow: 0 0 60px var(--accent-glow);
+  opacity: 0;
+  animation: ob-num-in 800ms var(--ease-quart) 800ms both;
+}
+@keyframes ob-num-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ob-time-unit {
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 700;
+}
+.ob-time-sub {
+  font-size: 13px;
+  color: var(--text-mute);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ob-time-arrow {
+  opacity: 0;
+  animation: ob-arrow-in 600ms var(--ease-quart) 500ms both;
+}
+@keyframes ob-arrow-in {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ob-time-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 500px;
+}
+.ob-time-bar {
+  height: 8px;
+  border-radius: 4px;
+  transform-origin: left;
+}
+.ob-time-bar-old {
+  background: var(--text-faint);
+  width: 100%;
+  opacity: 0;
+  animation: ob-bar-in 600ms var(--ease-quart) 300ms both;
+}
+.ob-time-bar-new {
+  background: var(--accent);
+  width: 10%;
+  opacity: 0;
+  animation: ob-bar-new-in 1000ms var(--ease-expo) 1000ms both;
+}
+@keyframes ob-bar-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 0.4; transform: scaleX(1); }
+}
+@keyframes ob-bar-new-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* ── Step 2: Git history 可视化 ── */
+.ob-git-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.ob-git-prompt {
+  font-size: clamp(32px, 3vw, 48px);
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+.ob-git-q {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 1.4em;
+  color: var(--accent);
+  line-height: 0.8;
+}
+.ob-highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ob-git-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ob-commit {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  min-height: 64px;
+  opacity: 0;
+}
+.ob-commit-1 { animation: ob-commit-in 500ms var(--ease-quart) 600ms both; }
+.ob-commit-2 { animation: ob-commit-in 500ms var(--ease-quart) 1000ms both; }
+.ob-commit-3 { animation: ob-commit-in 500ms var(--ease-quart) 1400ms both; }
+
+@keyframes ob-commit-in {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ob-commit-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--surface);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.ob-commit-line {
+  width: 2px;
+  background: var(--rule);
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 20px;
+}
+.ob-commit-body {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+.ob-commit-hash {
+  font-size: 15px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+.ob-commit-msg {
+  font-size: 20px;
+  color: var(--text);
+}
+.ob-commit-who {
+  font-size: 14px;
+  color: var(--text-faint);
+}
+
+.ob-git-result {
+  padding: 24px 32px;
+  opacity: 0;
+  animation: ob-result-in 700ms var(--ease-quart) 2000ms both;
+}
+@keyframes ob-result-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ob-result-label {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ob-result-text {
+  font-size: 22px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* ── Step 3: 问问题类型 ── */
+.ob-qa-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 56px;
+}
+
+.ob-qa-header {
+  text-align: center;
+  font-size: var(--t-h1);
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+.ob-em {
+  color: var(--accent);
+}
+
+.ob-qa-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ob-qa-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  opacity: 0;
+  animation: ob-qa-in 600ms var(--ease-quart) both;
+}
+@keyframes ob-qa-in {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ob-qa-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.ob-qa-content {
+  flex: 1;
+}
+.ob-qa-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.ob-qa-example {
+  font-size: 15px;
+  color: var(--text-mute);
+}

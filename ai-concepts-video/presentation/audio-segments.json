@@ -1,0 +1,296 @@
+[
+  {
+    "chapter": "coldopen",
+    "step": 1,
+    "text": "你以为会用 ChatGPT 就懂 AI 了？",
+    "audio": "coldopen/1.mp3"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 2,
+    "text": "真正拉开差距的，不是模型，而是这 6 个概念。",
+    "audio": "coldopen/2.mp3"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 3,
+    "text": "LLM、Prompt、Workflow、Tool Use、Agent、AI Coding。",
+    "audio": "coldopen/3.mp3"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 4,
+    "text": "掌握它们，你才能真正驾驭 AI。",
+    "audio": "coldopen/4.mp3"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 5,
+    "text": "先从最底层开始：LLM。",
+    "audio": "coldopen/5.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 1,
+    "text": "LLM，全称 Large Language Model。",
+    "audio": "llm/1.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 2,
+    "text": "你可以把它想象成 AI 的大脑。",
+    "audio": "llm/2.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 3,
+    "text": "它通过海量文本、代码和知识训练，学会了理解、推理、写作、编程。",
+    "audio": "llm/3.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 4,
+    "text": "ChatGPT、Claude、Gemini、DeepSeek、Qwen、Llama —— 它们都是 LLM。",
+    "audio": "llm/4.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 5,
+    "text": "但 LLM 本身只是一个会说话的大脑。",
+    "audio": "llm/5.mp3"
+  },
+  {
+    "chapter": "llm",
+    "step": 6,
+    "text": "它需要指令，才能真正工作。",
+    "audio": "llm/6.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 1,
+    "text": "但大脑需要指令。",
+    "audio": "prompt/1.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 2,
+    "text": "Prompt，就是你给 AI 的指令。",
+    "audio": "prompt/2.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 3,
+    "text": "它包含：角色、任务、背景、风格、输出格式。",
+    "audio": "prompt/3.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 4,
+    "text": "一个模糊的 Prompt，就像对大脑说：「帮我写篇文章」。",
+    "audio": "prompt/4.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 5,
+    "text": "AI 会迷茫、跑题、输出平庸。",
+    "audio": "prompt/5.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 6,
+    "text": "但如果你说：「你是一个科普作者，用通俗语言，写一篇介绍 AI 概念的文章，适合发在 X 平台」。",
+    "audio": "prompt/6.mp3"
+  },
+  {
+    "chapter": "prompt",
+    "step": 7,
+    "text": "AI 就知道该怎么做了。",
+    "audio": "prompt/7.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 1,
+    "text": "但指令还不够。",
+    "audio": "workflow/1.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 2,
+    "text": "Workflow，就是让 AI 按流程做事。",
+    "audio": "workflow/2.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 3,
+    "text": "把一个大任务拆成 6 个小步骤：分析读者、定主题、做大纲、写正文、改标题、配图提示词。",
+    "audio": "workflow/3.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 4,
+    "text": "没有 Workflow，AI 像一个没有 SOP 的新员工。",
+    "audio": "workflow/4.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 5,
+    "text": "有 Workflow，AI 就知道该先做什么、后做什么。",
+    "audio": "workflow/5.mp3"
+  },
+  {
+    "chapter": "workflow",
+    "step": 6,
+    "text": "输出质量，瞬间提升。",
+    "audio": "workflow/6.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 1,
+    "text": "但大脑还需要手和眼睛。",
+    "audio": "tooluse/1.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 2,
+    "text": "Tool Use，就是让 AI 调用外部工具。",
+    "audio": "tooluse/2.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 3,
+    "text": "没有工具，AI 只能「说」。",
+    "audio": "tooluse/3.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 4,
+    "text": "它无法查网页、读文件、跑代码、调 API、发邮件、生成图。",
+    "audio": "tooluse/4.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 5,
+    "text": "但如果给它工具，它就能「做」。",
+    "audio": "tooluse/5.mp3"
+  },
+  {
+    "chapter": "tooluse",
+    "step": 6,
+    "text": "从会说话，变成会办事。",
+    "audio": "tooluse/6.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 1,
+    "text": "第五个是 Agent。",
+    "audio": "agent/1.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 2,
+    "text": "Agent，不是聊天机器人，而是一个能自主行动的 AI 系统。",
+    "audio": "agent/2.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 3,
+    "text": "普通对话：你问一句，它答一句。",
+    "audio": "agent/3.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 4,
+    "text": "Agent：你给它一个目标，它自己拆解任务、调用工具、执行步骤、检查结果、继续推进。",
+    "audio": "agent/4.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 5,
+    "text": "比如你说「帮我做一个 Web3 博客网站」。",
+    "audio": "agent/5.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 6,
+    "text": "Agent 会自动完成 9 步：理解需求、拆模块、选技术栈、搭项目、写代码、跑项目、修 Bug、优化、部署。",
+    "audio": "agent/6.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 7,
+    "text": "LLM 像一个会回答问题的大脑。",
+    "audio": "agent/7.mp3"
+  },
+  {
+    "chapter": "agent",
+    "step": 8,
+    "text": "Agent 像一个会自己干活的 AI 员工。",
+    "audio": "agent/8.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 1,
+    "text": "最后一个是 AI Coding。",
+    "audio": "aicoding/1.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 2,
+    "text": "AI Coding，不是让 AI 写一段代码，而是让 AI 参与整个开发。",
+    "audio": "aicoding/2.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 3,
+    "text": "它能解释代码、生成代码、修 Bug、搭项目、写测试、部署上线。",
+    "audio": "aicoding/3.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 4,
+    "text": "基础用法：对 AI 说「用 React 写一个钱包连接页面」。",
+    "audio": "aicoding/4.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 5,
+    "text": "进阶用法：对 AI 说「阅读整个项目，找到登录 Bug 并修复它」。",
+    "audio": "aicoding/5.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 6,
+    "text": "工具包括：Cursor、Claude Code、GitHub Copilot、Windsurf、Devin。",
+    "audio": "aicoding/6.mp3"
+  },
+  {
+    "chapter": "aicoding",
+    "step": 7,
+    "text": "AI Coding 的价值，不是替代程序员，而是把效率提升 10 倍。",
+    "audio": "aicoding/7.mp3"
+  },
+  {
+    "chapter": "summary",
+    "step": 1,
+    "text": "最后总结一下。",
+    "audio": "summary/1.mp3"
+  },
+  {
+    "chapter": "summary",
+    "step": 2,
+    "text": "LLM 是大脑，Prompt 是指令，Workflow 是流程，Tool Use 是工具，Agent 是员工，AI Coding 是落地。",
+    "audio": "summary/2.mp3"
+  },
+  {
+    "chapter": "summary",
+    "step": 3,
+    "text": "从会问问题，到会写 Prompt、搭 Workflow、用工具、建 Agent、做项目。",
+    "audio": "summary/3.mp3"
+  },
+  {
+    "chapter": "summary",
+    "step": 4,
+    "text": "这，才是 AI 时代真正值得掌握的能力路径。",
+    "audio": "summary/4.mp3"
+  }
+]

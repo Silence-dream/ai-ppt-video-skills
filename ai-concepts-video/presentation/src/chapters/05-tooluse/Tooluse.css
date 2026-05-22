@@ -1,0 +1,167 @@
+.tooluse-stage {
+  width: 1920px;
+  height: 1080px;
+  background: #0a0f1e;
+  color: #f8fafc;
+  font-family: "Noto Serif SC", "Source Han Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero */
+.tooluse-hero {
+  text-align: center;
+}
+
+.tooluse-label {
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #64748b;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.tooluse-title {
+  font-size: 140px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -6px;
+  line-height: 1;
+}
+
+.tooluse-subtitle {
+  font-size: 36px;
+  color: #94a3b8;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.tooluse-hero-icon {
+  font-size: 80px;
+  margin-top: 48px;
+}
+
+/* Definition */
+.tooluse-def {
+  text-align: center;
+  max-width: 900px;
+}
+
+.tooluse-text {
+  font-size: 56px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.tooluse-desc {
+  margin-top: 24px;
+  font-size: 36px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+/* Locked - without tools */
+.tooluse-locked {
+  text-align: center;
+  width: 1000px;
+}
+
+.tooluse-locked-text {
+  font-size: 48px;
+  font-weight: 700;
+  color: #f87171;
+  margin: 32px 0;
+}
+
+.tooluse-locked-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.tooluse-locked-item {
+  padding: 20px 24px;
+  background: #1e293b;
+  border: 2px solid #f87171;
+  border-radius: 12px;
+  font-size: 24px;
+  color: #94a3b8;
+}
+
+/* Unlocked - with tools */
+.tooluse-unlocked {
+  text-align: center;
+  width: 1100px;
+}
+
+.tooluse-unlocked-text {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4ade80;
+  margin: 32px 0;
+}
+
+.tooluse-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.tooluse-tool-card {
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.tooluse-tool-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.tooluse-tool-label {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+/* Transform */
+.tooluse-transform {
+  text-align: center;
+}
+
+.tooluse-transform-text {
+  font-size: 48px;
+  color: #e2e8f0;
+}
+
+.tooluse-transform-highlight {
+  margin-top: 24px;
+  font-size: 56px;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+/* Insight */
+.tooluse-insight {
+  text-align: center;
+  max-width: 1000px;
+}
+
+.tooluse-insight-text {
+  font-size: 42px;
+  color: #94a3b8;
+}
+
+.tooluse-insight-highlight {
+  margin-top: 24px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #3b82f6;
+}

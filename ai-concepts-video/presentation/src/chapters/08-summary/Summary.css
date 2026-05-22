@@ -1,0 +1,135 @@
+.sum-stage {
+  width: 1920px;
+  height: 1080px;
+  background: #0a0f1e;
+  color: #f8fafc;
+  font-family: "Noto Serif SC", "Source Han Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Intro */
+.sum-intro {
+  text-align: center;
+}
+
+.sum-ch {
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: #64748b;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.sum-text {
+  font-size: 72px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+/* 6 concepts path - epic reveal */
+.sum-path {
+  width: 1200px;
+  text-align: center;
+}
+
+.sum-label {
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: #64748b;
+  margin-bottom: 48px;
+  font-weight: 600;
+}
+
+.sum-path-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.sum-path-item {
+  padding: 28px 20px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.sum-path-id {
+  font-size: 28px;
+  font-weight: 900;
+  color: #3b82f6;
+}
+
+.sum-path-label {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Capability ladder */
+.sum-ladder {
+  width: 900px;
+  text-align: center;
+}
+
+.sum-ladder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.sum-ladder-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 32px;
+  background: #1e293b;
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+}
+
+.sum-ladder-num {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.sum-ladder-text {
+  font-size: 28px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Final message */
+.sum-final {
+  text-align: center;
+  max-width: 1000px;
+}
+
+.sum-final-text {
+  font-size: 48px;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.sum-cta {
+  margin-top: 48px;
+  font-size: 36px;
+  color: #3b82f6;
+  font-weight: 700;
+}
