@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"D:\\\\02Code\\\\video\\\\ai-concepts-video\\\\script.md\" -Raw)",
+      "Bash(Measure-Object -Character)",
+      "PowerShell(Get-Content *)",
+      "Bash(bash \"D:\\\\02Code\\\\video\\\\.claude\\\\skills\\\\web-video-presentation\\\\scripts\\\\scaffold.sh\" ./presentation --theme=newsroom)",
+      "WebFetch(domain:platform.xiaomimimo.com)",
+      "WebSearch",
+      "Bash(curl -s -L \"https://platform.xiaomimimo.com/docs/zh-CN/usage-guide/speech-synthesis-v2.5\" -H \"User-Agent: Mozilla/5.0\" -o /tmp/xiaomi_mimo_doc.html)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri 'https://platform.xiaomimimo.com/docs/zh-CN/usage-guide/speech-synthesis-v2.5' -UseBasicParsing | Select-Object -ExpandProperty Content\")",
+      "Bash(curl -s -L \"https://platform.xiaomimimo.com/docs/zh-CN/usage-guide/speech-synthesis-v2.5\" -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\)\")",
+      "Bash(curl -s -L \"https://platform.xiaomimimo.com/docs/llms.txt\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s -L \"https://platform.xiaomimimo.com/llms.txt\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl *)",
+      "Bash(Select-String \"env\")",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(powershell *)",
+      "Bash(bash *)",
+      "Bash(npm --version)",
+      "Bash(mkdir -p \"D:/02Code/video/01/presentation\")",
+      "Bash(npm create *)",
+      "Bash(node -e ' *)",
+      "Bash(npx tsc *)",
+      "Bash(ffmpeg -version)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.claude.com)"
+    ]
+  }
+}
