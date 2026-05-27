@@ -1,0 +1,230 @@
+[
+  {
+    "chapter": "coldopen",
+    "step": 1,
+    "text": "别小看 prompt caching。对长会话 agent 来说。它不是省钱小技巧。它更像地基。地基一歪。上面的产品体验全跟着晃。",
+    "audio": "coldopen/1.wav"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 2,
+    "text": "Claude Code 这篇文章，讲得很直。长时间运行的 agent。为什么成本能压住？为什么响应还能快？很大一部分答案。就是 prompt caching。同一段前缀算过一次。后面能复用。成本少一截。延迟也少一截。",
+    "audio": "coldopen/2.wav"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 3,
+    "text": "但重点不是“用了缓存”。而是整个 harness。都要围着缓存设计。",
+    "audio": "coldopen/3.wav"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 4,
+    "text": "Claude Code 甚至会监控。缓存命中率。命中率低了就报警。严重的时候按事故处理。这挺夸张。也挺合理。",
+    "audio": "coldopen/4.wav"
+  },
+  {
+    "chapter": "coldopen",
+    "step": 5,
+    "text": "因为 agent 一旦跑长。几百分点的缓存损失。就会变成真金白银。还会变成用户等得烦。",
+    "audio": "coldopen/5.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 1,
+    "text": "prompt caching 怕什么？怕前缀变。它是 prefix matching。从请求开头开始对。",
+    "audio": "prefix-rule/1.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 2,
+    "text": "从请求开头开始对。对到 cache breakpoint。",
+    "audio": "prefix-rule/2.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 3,
+    "text": "只要中间一个地方变了。后面就别想复用。",
+    "audio": "prefix-rule/3.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 4,
+    "text": "所以顺序特别关键。稳定的东西放前面。会变的东西放后面。",
+    "audio": "prefix-rule/4.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 5,
+    "text": "Claude Code 的顺序大概是这样。最前面是静态 system prompt。还有工具定义。然后是项目里的 CLAUDE.md。再往后是 session context。对话消息排在末尾。",
+    "audio": "prefix-rule/5.wav"
+  },
+  {
+    "chapter": "prefix-rule",
+    "step": 6,
+    "text": "这套顺序的目的很简单。能让全局共享的先共享。项目内共享的再共享。会话内共享的继续共享。只有真正每轮变化的内容，留到末尾。",
+    "audio": "prefix-rule/6.wav"
+  },
+  {
+    "chapter": "fragile-prefix",
+    "step": 1,
+    "text": "听起来不复杂。但它特别脆。文章里举了几个坑。",
+    "audio": "fragile-prefix/1.wav"
+  },
+  {
+    "chapter": "fragile-prefix",
+    "step": 2,
+    "text": "比如把详细时间戳。塞进静态 system prompt。",
+    "audio": "fragile-prefix/2.wav"
+  },
+  {
+    "chapter": "fragile-prefix",
+    "step": 3,
+    "text": "比如工具定义顺序。每次随机变一下。",
+    "audio": "fragile-prefix/3.wav"
+  },
+  {
+    "chapter": "fragile-prefix",
+    "step": 4,
+    "text": "再比如工具参数里。可调用 agent 列表变了。",
+    "audio": "fragile-prefix/4.wav"
+  },
+  {
+    "chapter": "fragile-prefix",
+    "step": 5,
+    "text": "这些改动看着都不大。但字节一变。缓存就被切开了。",
+    "audio": "fragile-prefix/5.wav"
+  },
+  {
+    "chapter": "message-state",
+    "step": 1,
+    "text": "所以动态信息怎么传？别急着改 system prompt。",
+    "audio": "message-state/1.wav"
+  },
+  {
+    "chapter": "message-state",
+    "step": 2,
+    "text": "时间变了。文件被用户改了。当前状态更新了。这些都可以放进下一条 message。",
+    "audio": "message-state/2.wav"
+  },
+  {
+    "chapter": "message-state",
+    "step": 3,
+    "text": "Claude Code 会用类似 system-reminder 的标签。把新情况告诉模型。",
+    "audio": "message-state/3.wav"
+  },
+  {
+    "chapter": "message-state",
+    "step": 4,
+    "text": "模型能看到更新。前面的稳定前缀。也还能继续命中。",
+    "audio": "message-state/4.wav"
+  },
+  {
+    "chapter": "model-cache",
+    "step": 1,
+    "text": "还有一个反直觉点。中途换模型。不一定省钱。假设你已经用 Opus。聊了十万 token。现在来了个简单问题。你想切 Haiku。听起来便宜。",
+    "audio": "model-cache/1.wav"
+  },
+  {
+    "chapter": "model-cache",
+    "step": 2,
+    "text": "但 Haiku 没有 Opus 的缓存。它得重新建一遍。这一把可能更贵。",
+    "audio": "model-cache/2.wav"
+  },
+  {
+    "chapter": "model-cache",
+    "step": 3,
+    "text": "更好的办法。是用 subagent 交接。让原来的模型。先准备一段 hand-off。把任务、背景、限制讲清楚。然后另一个模型。只处理这个子任务。Claude Code 里的 Explore agents。就经常这么干。",
+    "audio": "model-cache/3.wav"
+  },
+  {
+    "chapter": "stable-tools",
+    "step": 1,
+    "text": "工具也是一样。不要在会话中途。增删工具。工具定义属于前缀。你加一个工具。或者删一个工具。都会让缓存重新来过。这也是为什么 Plan Mode。设计得很有意思。",
+    "audio": "stable-tools/1.wav"
+  },
+  {
+    "chapter": "stable-tools",
+    "step": 2,
+    "text": "直觉做法是，进 plan mode 的时候。把编辑工具拿掉。只留只读工具。但这样工具集变了。缓存就碎了。",
+    "audio": "stable-tools/2.wav"
+  },
+  {
+    "chapter": "stable-tools",
+    "step": 3,
+    "text": "Claude Code 反过来做。工具集一直不变。进入 plan mode。退出 plan mode。本身就是工具。",
+    "audio": "stable-tools/3.wav"
+  },
+  {
+    "chapter": "stable-tools",
+    "step": 4,
+    "text": "再用消息告诉模型。现在只能探索。不能改文件。计划完成再退出。",
+    "audio": "stable-tools/4.wav"
+  },
+  {
+    "chapter": "defer-loading",
+    "step": 1,
+    "text": "工具太多怎么办？也不是中途移除。而是 defer loading。",
+    "audio": "defer-loading/1.wav"
+  },
+  {
+    "chapter": "defer-loading",
+    "step": 2,
+    "text": "先放稳定的轻量 stub。只告诉模型工具名。还有需要时再加载。模型真的要用。再通过 tool search。把完整 schema 拉出来。",
+    "audio": "defer-loading/2.wav"
+  },
+  {
+    "chapter": "defer-loading",
+    "step": 3,
+    "text": "这样前缀稳定。成本也不会被一堆工具说明拖死。",
+    "audio": "defer-loading/3.wav"
+  },
+  {
+    "chapter": "cache-safe-fork",
+    "step": 1,
+    "text": "还有一个坑。是 compaction。上下文快满了。你要总结前文。最简单的写法。是单独发一个请求。system prompt 写请总结。工具也不带。这看起来干净。",
+    "audio": "cache-safe-fork/1.wav"
+  },
+  {
+    "chapter": "cache-safe-fork",
+    "step": 2,
+    "text": "但从缓存角度看。它从第一个 token。就和主会话不一样。所以整段长对话。都得按未缓存价格算。",
+    "audio": "cache-safe-fork/2.wav"
+  },
+  {
+    "chapter": "cache-safe-fork",
+    "step": 3,
+    "text": "Claude Code 的做法。叫 cache-safe fork。compaction 那次调用。沿用父会话同一套 system prompt。同一套上下文。同一套工具定义。再把父会话 messages 放前面。末尾追加一个总结请求。这样 API 看到的前缀。几乎和上一轮一样。真正新增的。只是末尾那段总结指令。",
+    "audio": "cache-safe-fork/3.wav"
+  },
+  {
+    "chapter": "cache-safe-fork",
+    "step": 4,
+    "text": "当然，这么做也有代价。你得预留 compaction buffer。不然上下文满到一滴不剩。连总结指令。和总结输出的位置都没有。所以缓存不是只看当下。还要给未来的维护动作。留空间。",
+    "audio": "cache-safe-fork/4.wav"
+  },
+  {
+    "chapter": "checklist",
+    "step": 1,
+    "text": "这篇文章最有用的地方。不是告诉你开一个缓存开关。而是提醒你。agent 架构里。稳定性是要设计出来的。",
+    "audio": "checklist/1.wav"
+  },
+  {
+    "chapter": "checklist",
+    "step": 2,
+    "text": "如果你正在做 agent。可以先查三件事。你的静态 prompt 里。有没有时间戳？动态状态，应该走 message。",
+    "audio": "checklist/2.wav"
+  },
+  {
+    "chapter": "checklist",
+    "step": 3,
+    "text": "工具定义顺序。是不是每轮一致？工具列表和模型选择。是不是中途乱换？状态切换用工具建模。工具加载用延迟发现。",
+    "audio": "checklist/3.wav"
+  },
+  {
+    "chapter": "checklist",
+    "step": 4,
+    "text": "compaction。summary。skill execution 这种侧向任务。有没有沿用父会话前缀？把这三件事查起来。很多缓存问题。会提前暴露。",
+    "audio": "checklist/4.wav"
+  }
+]

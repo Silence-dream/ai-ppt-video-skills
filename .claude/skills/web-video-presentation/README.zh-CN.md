@@ -107,7 +107,7 @@ bash skills/web-video-presentation/scripts/scaffold.sh ./presentation --theme=pa
 bash skills/web-video-presentation/scripts/scaffold.sh --list-themes
 ```
 
-生成的 `presentation/` 是普通 Vite + React + TypeScript 项目。启动后用录屏工具录制 16:9 舞台即可。
+生成的 `presentation/` 是普通 Vite + React + TypeScript + pnpm 项目。启动后用录屏工具录制 16:9 舞台即可。
 
 ---
 
@@ -139,4 +139,3 @@ Skill 内置多套主题，每套都有自己的设计 DNA，不只是换色：
 - [PATTERNS.md](./references/PATTERNS.md)：可选视觉 primitive 配方
 - [AUDIO.md](./references/AUDIO.md)：可选口播音频合成流程
 - [RECORDING.md](./references/RECORDING.md)：录屏与后期注意事项
-

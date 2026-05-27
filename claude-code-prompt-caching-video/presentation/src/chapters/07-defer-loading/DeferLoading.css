@@ -1,0 +1,329 @@
+.dl-scene {
+  position: absolute;
+  inset: 0;
+  padding: 88px 108px;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.dl-scene::before {
+  content: "";
+  position: absolute;
+  inset: 72px 96px;
+  border: 2px dashed var(--rule);
+  pointer-events: none;
+  opacity: 0.54;
+}
+
+.dl-kicker,
+.dl-stub small,
+.dl-drawer-tab,
+.dl-late-load,
+.dl-prefix-stable > span {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dl-copy {
+  position: relative;
+  z-index: 3;
+  width: 720px;
+}
+
+.dl-copy-wide {
+  width: 840px;
+}
+
+.dl-kicker {
+  margin-bottom: 24px;
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.dl-copy h2,
+.dl-copy p {
+  margin: 0;
+}
+
+.dl-copy h2 {
+  font-family: var(--font-display-cn);
+  font-size: 84px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.dl-copy p {
+  margin-top: 30px;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 31px;
+  line-height: 1.42;
+}
+
+.dl-scene-stubs .dl-stub-grid,
+.dl-scene-search .dl-stub-grid {
+  position: absolute;
+  left: 112px;
+  bottom: 126px;
+  width: 900px;
+}
+
+.dl-stub-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.dl-stub {
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 22px;
+  border: 2px solid var(--rule);
+  background: color-mix(in srgb, var(--surface-2), transparent 18%);
+  animation: dl-stub-rise 720ms var(--ease-quart) both;
+}
+
+.dl-stub:nth-child(2) { animation-delay: 70ms; }
+.dl-stub:nth-child(3) { animation-delay: 140ms; }
+.dl-stub:nth-child(4) { animation-delay: 210ms; }
+.dl-stub:nth-child(5) { animation-delay: 280ms; }
+.dl-stub:nth-child(6) { animation-delay: 350ms; }
+.dl-stub:nth-child(7) { animation-delay: 420ms; }
+.dl-stub:nth-child(8) { animation-delay: 490ms; }
+
+.dl-stub span {
+  color: var(--text);
+  font-family: var(--font-display-en);
+  font-size: 34px;
+}
+
+.dl-stub small {
+  color: var(--text-mute);
+  font-size: 12px;
+}
+
+.dl-stub-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 2px var(--accent-soft), 0 0 32px var(--accent-glow);
+}
+
+.dl-drawer {
+  position: absolute;
+  right: 114px;
+  top: 126px;
+  width: 520px;
+  height: 780px;
+  border: 2px dashed var(--rule);
+  background: color-mix(in srgb, var(--surface), transparent 8%);
+  transform: translateX(336px);
+  animation: dl-drawer-idle 900ms var(--ease-quart) both;
+}
+
+.dl-drawer-open {
+  transform: translateX(0);
+  animation: dl-drawer-open 900ms var(--ease-quart) both;
+}
+
+.dl-drawer-tab {
+  position: absolute;
+  left: -176px;
+  top: 310px;
+  width: 176px;
+  padding: 18px 14px;
+  border: 2px solid var(--rule);
+  border-right: 0;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.dl-schema-card {
+  margin: 80px 54px;
+  padding: 36px;
+  border: 2px solid var(--accent);
+  background: var(--surface-2);
+  box-shadow: 0 0 38px var(--accent-glow);
+}
+
+.dl-schema-card strong {
+  display: block;
+  margin-bottom: 30px;
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.dl-schema-card span {
+  display: block;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px dashed var(--rule);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 22px;
+}
+
+.dl-schema-stack {
+  position: absolute;
+  left: 54px;
+  right: 54px;
+  bottom: 68px;
+  height: 160px;
+  border: 2px dashed var(--rule);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      var(--accent-soft) 0 14px,
+      transparent 14px 28px
+    );
+}
+
+.dl-search-beam {
+  position: absolute;
+  left: 740px;
+  bottom: 280px;
+  width: 760px;
+  height: 300px;
+}
+
+.dl-beam-rail,
+.dl-beam-trace {
+  fill: none;
+  stroke-linecap: square;
+}
+
+.dl-beam-rail {
+  stroke: var(--rule);
+  stroke-width: 6;
+}
+
+.dl-beam-trace {
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-dasharray: 760;
+  stroke-dashoffset: 760;
+  animation: dl-trace 1300ms var(--ease-quart) 180ms both;
+}
+
+.dl-beam-node {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 4;
+  animation: dl-node-pulse 680ms var(--ease-overshoot) both;
+}
+
+.dl-beam-node-b { animation-delay: 220ms; }
+.dl-beam-node-c { animation-delay: 520ms; }
+.dl-beam-node-d { animation-delay: 760ms; }
+
+.dl-prefix-lane {
+  position: absolute;
+  left: 108px;
+  right: 108px;
+  bottom: 120px;
+  height: 438px;
+  display: grid;
+  grid-template-columns: 1fr 3px 460px;
+  gap: 38px;
+}
+
+.dl-prefix-stable,
+.dl-late-load {
+  border: 2px dashed var(--rule);
+  background: color-mix(in srgb, var(--surface-2), transparent 28%);
+}
+
+.dl-prefix-stable {
+  padding: 38px;
+  animation: dl-lock-prefix 900ms var(--ease-quart) both;
+}
+
+.dl-prefix-stable > span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.dl-prefix-stable .dl-stub-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.dl-prefix-stable .dl-stub {
+  height: 96px;
+}
+
+.dl-prefix-break {
+  background: var(--accent);
+  box-shadow: 0 0 28px var(--accent-glow);
+  transform-origin: top;
+  animation: dl-grow-down 850ms var(--ease-quart) 420ms both;
+}
+
+.dl-late-load {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 20px;
+  padding: 34px;
+  animation: dl-late-slide 850ms var(--ease-quart) 720ms both;
+}
+
+.dl-late-load strong {
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.dl-late-load span {
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+@keyframes dl-stub-rise {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes dl-drawer-idle {
+  from { clip-path: inset(0 0 0 100%); opacity: 0; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+@keyframes dl-drawer-open {
+  from { transform: translateX(336px); }
+  to { transform: translateX(0); }
+}
+
+@keyframes dl-trace {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes dl-node-pulse {
+  from { transform: scale(0.46); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes dl-lock-prefix {
+  from { clip-path: inset(0 100% 0 0); opacity: 0.4; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+@keyframes dl-grow-down {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes dl-late-slide {
+  from { transform: translateX(42px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

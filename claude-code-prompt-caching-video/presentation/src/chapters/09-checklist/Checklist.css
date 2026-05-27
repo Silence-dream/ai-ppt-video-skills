@@ -1,0 +1,335 @@
+.cl-scene {
+  position: absolute;
+  inset: 0;
+  padding: 88px 108px;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.cl-scene::before {
+  content: "";
+  position: absolute;
+  inset: 72px 96px;
+  border: 2px dashed var(--rule);
+  pointer-events: none;
+  opacity: 0.54;
+}
+
+.cl-kicker,
+.cl-node-label,
+.cl-arch-card,
+.cl-prompt-box,
+.cl-check-mark,
+.cl-tool-columns,
+.cl-fork-parent,
+.cl-fork-child {
+  font-family: var(--font-mono);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.cl-copy {
+  position: relative;
+  z-index: 4;
+  width: 900px;
+}
+
+.cl-kicker {
+  margin-bottom: 24px;
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.cl-copy h2,
+.cl-copy p {
+  margin: 0;
+}
+
+.cl-copy h2 {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.cl-copy p {
+  margin-top: 28px;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.42;
+}
+
+.cl-architecture {
+  position: absolute;
+  left: 126px;
+  right: 126px;
+  bottom: 94px;
+  height: 520px;
+  border: 2px dashed var(--rule);
+  background: color-mix(in srgb, var(--surface-2), transparent 36%);
+}
+
+.cl-architecture svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cl-arch-rail,
+.cl-arch-trace {
+  fill: none;
+  stroke-linecap: square;
+}
+
+.cl-arch-rail {
+  stroke: var(--rule);
+  stroke-width: 6;
+}
+
+.cl-arch-trace {
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-dasharray: 980;
+  stroke-dashoffset: 980;
+  animation: cl-arch-trace 1500ms var(--ease-quart) both;
+}
+
+.cl-arch-trace-bottom {
+  animation-delay: 260ms;
+}
+
+.cl-arch-node {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 4;
+  animation: cl-node-pop 700ms var(--ease-overshoot) both;
+}
+
+.cl-arch-node-b { animation-delay: 150ms; }
+.cl-arch-node-c { animation-delay: 300ms; }
+.cl-arch-node-d { animation-delay: 420ms; }
+.cl-arch-node-e { animation-delay: 620ms; }
+.cl-arch-node-f { animation-delay: 740ms; }
+
+.cl-node-label {
+  position: absolute;
+  left: 70px;
+  top: 206px;
+  padding: 14px 18px;
+  border: 2px solid var(--rule);
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 15px;
+  animation: cl-label-in 700ms var(--ease-quart) 300ms both;
+}
+
+.cl-arch-card {
+  position: absolute;
+  width: 230px;
+  min-height: 70px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--rule);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 15px;
+  animation: cl-card-in 720ms var(--ease-quart) both;
+}
+
+.cl-arch-card-1 { left: 326px; top: 64px; animation-delay: 220ms; }
+.cl-arch-card-2 { left: 326px; bottom: 64px; animation-delay: 330ms; }
+.cl-arch-card-3 { right: 260px; top: 64px; animation-delay: 520ms; }
+.cl-arch-card-4 { right: 260px; bottom: 64px; animation-delay: 630ms; }
+.cl-arch-card-5 { right: 58px; top: 226px; animation-delay: 760ms; }
+
+.cl-check-panel {
+  position: absolute;
+  right: 128px;
+  bottom: 128px;
+  width: 760px;
+  height: 520px;
+  border: 2px dashed var(--rule);
+  background: color-mix(in srgb, var(--surface-2), transparent 28%);
+}
+
+.cl-check-num {
+  position: absolute;
+  left: 34px;
+  top: 22px;
+  color: var(--accent);
+  font-size: 96px;
+  line-height: 1;
+}
+
+.cl-prompt-box {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 88px;
+  min-height: 260px;
+  padding: 34px;
+  border: 2px solid var(--rule);
+  background: var(--surface);
+  animation: cl-prompt-scan 1100ms var(--ease-quart) both;
+}
+
+.cl-prompt-box span,
+.cl-prompt-box small {
+  display: block;
+  color: var(--text-2);
+  font-size: 16px;
+}
+
+.cl-prompt-box strong {
+  display: inline-block;
+  margin-top: 56px;
+  padding: 16px 20px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  animation: cl-warning-stamp 850ms var(--ease-overshoot) 520ms both;
+}
+
+.cl-prompt-box small {
+  margin-top: 44px;
+  color: var(--text-mute);
+}
+
+.cl-check-mark {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 30px;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.cl-tool-columns {
+  position: absolute;
+  left: 70px;
+  right: 70px;
+  bottom: 94px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.cl-tool-columns div {
+  display: grid;
+  gap: 12px;
+}
+
+.cl-tool-columns span {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border: 2px solid var(--rule);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 17px;
+  animation: cl-tool-lock 800ms var(--ease-quart) both;
+}
+
+.cl-tool-columns span:nth-child(2) { animation-delay: 110ms; }
+.cl-tool-columns span:nth-child(3) { animation-delay: 220ms; }
+.cl-tool-columns span:nth-child(4) { animation-delay: 330ms; }
+
+.cl-tool-columns div:nth-child(2) span {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.cl-fork-check svg {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 126px;
+  width: 720px;
+  height: 320px;
+}
+
+.cl-fork-rail,
+.cl-fork-trace {
+  fill: none;
+  stroke-linecap: square;
+}
+
+.cl-fork-rail {
+  stroke: var(--rule);
+  stroke-width: 8;
+}
+
+.cl-fork-trace {
+  stroke: var(--accent);
+  stroke-width: 8;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 720;
+  animation: cl-fork-draw 1300ms var(--ease-quart) 180ms both;
+}
+
+.cl-fork-parent,
+.cl-fork-child {
+  position: absolute;
+  border: 2px solid var(--rule);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 16px;
+  padding: 18px 22px;
+}
+
+.cl-fork-parent {
+  left: 70px;
+  top: 170px;
+  animation: cl-label-in 650ms var(--ease-quart) both;
+}
+
+.cl-fork-child {
+  right: 70px;
+  bottom: 118px;
+  border-color: var(--accent);
+  color: var(--accent);
+  animation: cl-label-in 650ms var(--ease-quart) 700ms both;
+}
+
+@keyframes cl-arch-trace {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes cl-node-pop {
+  from { transform: scale(0.52); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes cl-label-in {
+  from { transform: translateY(22px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cl-card-in {
+  from { transform: translateX(-28px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes cl-prompt-scan {
+  from { clip-path: inset(0 100% 0 0); opacity: 0.42; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+@keyframes cl-warning-stamp {
+  from { transform: scale(0.72); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes cl-tool-lock {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cl-fork-draw {
+  to { stroke-dashoffset: 0; }
+}

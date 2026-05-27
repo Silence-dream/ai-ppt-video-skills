@@ -25,7 +25,9 @@
       "Bash(npx tsc *)",
       "Bash(ffmpeg -version)",
       "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:docs.claude.com)"
+      "WebFetch(domain:docs.claude.com)",
+      "Skill(web-video-presentation)",
+      "Bash(npx tsx *)"
     ]
   }
 }
