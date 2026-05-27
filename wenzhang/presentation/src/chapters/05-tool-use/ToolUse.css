@@ -1,0 +1,161 @@
+/* ─── Tool Use 章节 CSS（.tu- 前缀） ─── */
+
+.tu-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tu-section-title {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 40px;
+  text-align: center;
+  animation: tu-fade-up var(--dur-base) ease-out both;
+}
+
+/* ─── step 0: hero ─── */
+.tu-hero-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: tu-fade-up var(--dur-base) ease-out both;
+}
+
+.tu-hero-eq {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.tu-hero-term {
+  font-family: var(--font-display-en);
+  font-size: 82px;
+  font-weight: 700;
+  color: var(--text);
+  font-style: italic;
+}
+
+.tu-hero-op {
+  font-size: 58px;
+  color: var(--text-faint);
+}
+
+.tu-hero-val {
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.tu-hero-icons {
+  display: flex;
+  gap: 32px;
+  font-size: 58px;
+}
+
+/* ─── step 1: 工具网格 ─── */
+.tu-grid-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 160px;
+}
+
+.tu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 600px;
+}
+
+.tu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: tu-fade-up var(--dur-base) ease-out both;
+}
+
+.tu-card-icon {
+  font-size: 42px;
+}
+
+.tu-card-name {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ─── step 2: 演示 ─── */
+.tu-demo-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  padding: 0 120px;
+  animation: tu-fade-up var(--dur-base) ease-out both;
+}
+
+.tu-demo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tu-demo-input,
+.tu-demo-tool,
+.tu-demo-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 28px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+}
+
+.tu-demo-label {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tu-demo-text {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tu-demo-arrow {
+  font-size: 38px;
+  color: var(--accent);
+}
+
+.tu-demo-note {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+@keyframes tu-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

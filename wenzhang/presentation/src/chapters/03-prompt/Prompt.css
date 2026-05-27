@@ -1,0 +1,173 @@
+/* ─── Prompt 章节 CSS（.pr- 前缀） ─── */
+
+.pr-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pr-section-title {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text-mute);
+  margin: 0 0 32px;
+  text-align: center;
+  animation: pr-fade-up var(--dur-base) ease-out both;
+}
+
+/* ─── step 0: hero ─── */
+.pr-hero-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: pr-fade-up var(--dur-base) ease-out both;
+}
+
+.pr-hero-eq {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.pr-hero-term {
+  font-family: var(--font-display-en);
+  font-size: 90px;
+  font-weight: 700;
+  color: var(--text);
+  font-style: italic;
+}
+
+.pr-hero-op {
+  font-size: 58px;
+  color: var(--text-faint);
+}
+
+.pr-hero-val {
+  font-family: var(--font-display-cn);
+  font-size: 66px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.pr-bubble {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+}
+
+.pr-bubble-icon { font-size: 38px; }
+
+.pr-bubble-text {
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--text-2);
+  margin: 0;
+}
+
+/* ─── step 1: 反例 ─── */
+.pr-bad-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pr-fade-up var(--dur-base) ease-out both;
+}
+
+.pr-card {
+  padding: 40px 60px;
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  max-width: 600px;
+}
+
+.pr-card-bad {
+  background: var(--surface-3);
+}
+
+.pr-card-text {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--text-faint);
+  margin: 0 0 16px;
+}
+
+.pr-card-verdict {
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-faint);
+}
+
+/* ─── step 2: 正例 ─── */
+.pr-good-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pr-fade-up var(--dur-base) ease-out both;
+}
+
+.pr-card-good {
+  background: var(--surface-2);
+  text-align: left;
+}
+
+.pr-role {
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--text-2);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pr-role:last-of-type {
+  border-bottom: none;
+  margin-bottom: 16px;
+}
+
+.pr-verdict-good {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+/* ─── step 3: 公式 ─── */
+.pr-formula-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pr-fade-up var(--dur-base) ease-out both;
+}
+
+.pr-formula {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.pr-f-part {
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pr-f-accent {
+  color: var(--accent);
+}
+
+.pr-f-op {
+  font-size: 46px;
+  color: var(--text-faint);
+}
+
+@keyframes pr-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,273 @@
+/* ─── AI Coding 章节 CSS（.ac- 前缀） ─── */
+
+.ac-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ac-section-title {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 36px;
+  text-align: center;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+/* ─── step 0: hero ─── */
+.ac-hero-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-hero-eq {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.ac-hero-term {
+  font-family: var(--font-display-en);
+  font-size: 82px;
+  font-weight: 700;
+  color: var(--text);
+  font-style: italic;
+}
+
+.ac-hero-op {
+  font-size: 58px;
+  color: var(--text-faint);
+}
+
+.ac-hero-val {
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.ac-hero-sub {
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+/* ─── step 1: 范围 ─── */
+.ac-scope-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 200px;
+}
+
+.ac-scope-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ac-scope-item {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 12px 24px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+/* ─── step 2: 工具 + 效率 ─── */
+.ac-tools-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-tools-list {
+  display: flex;
+  gap: 20px;
+}
+
+.ac-tool {
+  font-family: var(--font-display-en);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 16px 28px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-compare {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.ac-compare-before, .ac-compare-after {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ac-compare-label {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ac-compare-time {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ac-highlight {
+  color: var(--accent);
+}
+
+.ac-compare-arrow {
+  font-size: 42px;
+  color: var(--accent);
+}
+
+/* ─── step 3: 路线图 ─── */
+.ac-roadmap-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 120px;
+}
+
+.ac-roadmap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.ac-roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-roadmap-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rule);
+  flex-shrink: 0;
+}
+
+.ac-roadmap-dot-active {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.ac-roadmap-name {
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.ac-roadmap-name-active {
+  color: var(--accent);
+  font-size: 30px;
+}
+
+.ac-roadmap-line {
+  width: 32px;
+  height: 2px;
+  background: var(--rule);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* ─── step 4: CTA ─── */
+.ac-cta-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-cta-title {
+  font-family: var(--font-display-cn);
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.ac-cta-steps {
+  display: flex;
+  gap: 32px;
+}
+
+.ac-cta-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: ac-fade-up var(--dur-base) ease-out both;
+}
+
+.ac-cta-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-size: 34px;
+  color: var(--accent);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ac-cta-text {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ac-cta-note {
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--accent);
+  margin: 0;
+  font-weight: 600;
+  animation: ac-fade-up var(--dur-base) ease-out 700ms both;
+}
+
+@keyframes ac-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

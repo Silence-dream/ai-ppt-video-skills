@@ -1,0 +1,199 @@
+/* ─── Agent 章节 CSS（.ag- 前缀） ─── */
+
+.ag-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ag-section-title {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 40px;
+  text-align: center;
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+/* ─── step 0: hero ─── */
+.ag-hero-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+.ag-hero-eq {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.ag-hero-term {
+  font-family: var(--font-display-en);
+  font-size: 90px;
+  font-weight: 700;
+  color: var(--text);
+  font-style: italic;
+}
+
+.ag-hero-op {
+  font-size: 58px;
+  color: var(--text-faint);
+}
+
+.ag-hero-val {
+  font-family: var(--font-display-cn);
+  font-size: 62px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.ag-hero-sub {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+/* ─── step 1: 对比 ─── */
+.ag-vs-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+.ag-vs {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.ag-vs-left, .ag-vs-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ag-vs-type {
+  font-family: var(--font-body);
+  font-size: 28px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ag-vs-behavior {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+.ag-highlight {
+  color: var(--accent);
+}
+
+.ag-vs-divider {
+  width: 2px;
+  height: 80px;
+  background: var(--rule);
+}
+
+/* ─── step 2: 案例流程 ─── */
+.ag-flow-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 140px;
+}
+
+.ag-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ag-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+.ag-flow-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-size: 26px;
+  color: var(--accent);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ag-flow-text {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ag-flow-arrow {
+  font-size: 34px;
+  color: var(--text-faint);
+  margin: 0 4px;
+}
+
+/* ─── step 3: 特质 ─── */
+.ag-traits-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+.ag-traits {
+  display: flex;
+  gap: 20px;
+}
+
+.ag-trait {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 16px 28px;
+  background: var(--surface-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: ag-fade-up var(--dur-base) ease-out both;
+}
+
+.ag-traits-note {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-mute);
+  margin: 0;
+  text-align: center;
+}
+
+@keyframes ag-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

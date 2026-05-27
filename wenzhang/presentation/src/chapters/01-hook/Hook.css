@@ -1,0 +1,213 @@
+/* ─── Hook 章节 CSS（.hk- 前缀） ─── */
+
+.hk-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ─── step 0: 大标题 ─── */
+.hk-title-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: hk-fade-up var(--dur-base) ease-out both;
+}
+
+.hk-hero-visual {
+  width: 180px;
+  height: auto;
+  animation: hk-fade-up var(--dur-base) ease-out both;
+  margin-bottom: 8px;
+}
+
+.hk-hero {
+  font-family: var(--font-display-cn);
+  font-size: 106px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+
+.hk-sub {
+  font-family: var(--font-body);
+  font-size: 38px;
+  color: var(--text-mute);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ─── step 1: 对比场景 ─── */
+.hk-vs-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+  padding: 0 160px;
+}
+
+.hk-vs-left,
+.hk-vs-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: hk-fade-up var(--dur-base) ease-out both;
+}
+
+.hk-vs-label {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hk-vs-text {
+  font-family: var(--font-display-cn);
+  font-size: 58px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+.hk-strike {
+  text-decoration: line-through;
+  color: var(--text-faint);
+  opacity: 0.6;
+}
+
+.hk-highlight {
+  color: var(--accent);
+  position: relative;
+}
+
+.hk-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.hk-vs-divider {
+  width: 2px;
+  height: 120px;
+  background: var(--rule);
+  flex-shrink: 0;
+  animation: hk-scale-y var(--dur-base) ease-out 200ms both;
+}
+
+/* ─── step 2: 升级路线图 ─── */
+.hk-roadmap-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  padding: 0 120px;
+}
+
+.hk-roadmap-title {
+  font-family: var(--font-display-cn);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  text-align: center;
+  animation: hk-fade-up var(--dur-base) ease-out both;
+}
+
+.hk-roadmap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.hk-roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: hk-fade-up var(--dur-base) ease-out both;
+}
+
+.hk-roadmap-item:nth-child(1) { animation-delay: 100ms; }
+.hk-roadmap-item:nth-child(2) { animation-delay: 200ms; }
+.hk-roadmap-item:nth-child(3) { animation-delay: 300ms; }
+.hk-roadmap-item:nth-child(4) { animation-delay: 400ms; }
+.hk-roadmap-item:nth-child(5) { animation-delay: 500ms; }
+.hk-roadmap-item:nth-child(6) { animation-delay: 600ms; }
+
+.hk-roadmap-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 30px;
+  color: var(--accent);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hk-roadmap-name {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.hk-roadmap-arrow {
+  font-size: 38px;
+  color: var(--text-faint);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.hk-roadmap-hint {
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--text-mute);
+  margin: 0;
+  text-align: center;
+  animation: hk-fade-up var(--dur-base) ease-out 700ms both;
+}
+
+/* ─── 关键帧 ─── */
+@keyframes hk-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hk-scale-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
