@@ -1,0 +1,675 @@
+/* signature 章节样式 - 使用 terminal-green 主题 token */
+/* CSS 前缀：.sg- */
+
+.sg-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: 没有手机号验证码 ─── */
+.sg-no-login {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.sg-no-login__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.1s forwards;
+}
+
+.sg-no-login__hero {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.6s var(--ease-quart) 0.3s forwards;
+}
+
+.sg-no-login__hero em {
+  font-style: normal;
+  color: var(--accent);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 65, 65, 0.7);
+  text-decoration-thickness: 4px;
+}
+
+/* 模拟登录表单被划掉 */
+.sg-no-login__form {
+  width: 420px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.6s forwards;
+}
+
+.sg-no-login__form-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.sg-no-login__form-input {
+  width: 100%;
+  height: 44px;
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.sg-no-login__form-btn {
+  width: 100%;
+  height: 44px;
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sg-no-login__strike {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sg-no-login__strike-line {
+  stroke: rgba(255, 65, 65, 0.8);
+  stroke-width: 3;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: sg-strike-draw 0.8s var(--ease-expo) 1.2s forwards;
+}
+
+@keyframes sg-strike-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ─── Step 1: 签名四作用 ─── */
+.sg-purposes {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.sg-purposes__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: sg-rise 0.4s var(--ease-quart) 0.1s forwards;
+}
+
+.sg-purposes__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.sg-purposes__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.sg-purposes__item {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: sg-rise 0.5s var(--ease-quart) forwards;
+}
+
+.sg-purposes__item:nth-child(1) { animation-delay: 0.3s; }
+.sg-purposes__item:nth-child(2) { animation-delay: 0.5s; }
+.sg-purposes__item:nth-child(3) { animation-delay: 0.7s; }
+.sg-purposes__item:nth-child(4) { animation-delay: 0.9s; }
+
+.sg-purposes__icon-box {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sg-purposes__icon-box::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--accent-soft);
+}
+
+.sg-purposes__icon {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.sg-purposes__title {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sg-purposes__desc {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  line-height: 1.6;
+}
+
+/* ─── Step 2: 链上的电子签字 ─── */
+.sg-analogy {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.sg-analogy__hero {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.6s var(--ease-quart) 0.2s forwards;
+}
+
+.sg-analogy__hero em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* 模拟签名动画 */
+.sg-analogy__sign-area {
+  width: 500px;
+  height: 200px;
+  border: 1px solid var(--rule);
+  background: var(--surface-2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.5s forwards;
+}
+
+.sg-analogy__sign-line {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.sg-analogy__signature {
+  font-family: var(--font-display-en);
+  font-size: 48px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: sg-sign-wipe 1.2s var(--ease-expo) 0.8s forwards;
+}
+
+.sg-analogy__sign-label {
+  position: absolute;
+  bottom: 16px;
+  right: 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+@keyframes sg-sign-wipe {
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ─── Step 3: Connect Wallet 按钮 ─── */
+.sg-connect {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.sg-connect__title {
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.2s forwards;
+}
+
+/* 模拟网页 */
+.sg-connect__browser {
+  width: 800px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.5s forwards;
+}
+
+.sg-connect__browser-bar {
+  height: 40px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.sg-connect__browser-dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--text-faint);
+}
+
+.sg-connect__browser-url {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-left: 12px;
+}
+
+.sg-connect__browser-body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.sg-connect__browser-text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text-2);
+}
+
+.sg-connect__btn {
+  padding: 16px 48px;
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--accent);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: sg-pulse-in 0.6s var(--ease-expo) 1s forwards;
+}
+
+.sg-connect__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-glow);
+  opacity: 0;
+  animation: sg-btn-glow 2s ease-in-out 1.6s infinite;
+}
+
+@keyframes sg-pulse-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sg-btn-glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.15; }
+}
+
+/* ─── Step 4: 签名请求弹窗 ─── */
+.sg-popup {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.sg-popup__title {
+  font-family: var(--font-display-cn);
+  font-size: 56px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.2s forwards;
+}
+
+/* 钱包弹窗 */
+.sg-popup__dialog {
+  width: 400px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  opacity: 0;
+  animation: sg-scale-in 0.5s var(--ease-expo) 0.6s forwards;
+}
+
+.sg-popup__dialog-header {
+  height: 48px;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.sg-popup__dialog-body {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sg-popup__dialog-site {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.sg-popup__dialog-msg {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  padding: 16px;
+  line-height: 1.6;
+}
+
+.sg-popup__dialog-msg-label {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sg-popup__dialog-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.sg-popup__dialog-btn {
+  flex: 1;
+  height: 44px;
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.sg-popup__dialog-btn--cancel {
+  background: var(--surface-3);
+  color: var(--text-mute);
+}
+
+.sg-popup__dialog-btn--sign {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sg-popup__no-gas {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  animation: sg-rise 0.4s var(--ease-quart) 1.2s forwards;
+}
+
+.sg-popup__no-gas em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+@keyframes sg-scale-in {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Step 5: 两类签名对比 ─── */
+.sg-compare {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.sg-compare__title {
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.2s forwards;
+}
+
+.sg-compare__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.sg-compare__card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) forwards;
+}
+
+.sg-compare__card:first-child { animation-delay: 0.4s; }
+.sg-compare__card:last-child { animation-delay: 0.7s; }
+
+.sg-compare__card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sg-compare__card-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.sg-compare__card-name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sg-compare__card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sg-compare__card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sg-compare__card-key {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-mute);
+}
+
+.sg-compare__card-val {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.sg-compare__card-val--green { color: var(--accent); }
+.sg-compare__card-val--mute { color: var(--text-mute); }
+
+/* ─── Step 6: 警示 ─── */
+.sg-warning {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.sg-warning__icon {
+  font-family: var(--font-mono);
+  font-size: 80px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-shake-in 0.6s var(--ease-expo) 0.2s forwards;
+}
+
+.sg-warning__text {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.5;
+  text-shadow: var(--text-shadow);
+  opacity: 0;
+  animation: sg-rise 0.6s var(--ease-quart) 0.5s forwards;
+}
+
+.sg-warning__text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sg-warning__sub {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  animation: sg-rise 0.5s var(--ease-quart) 0.9s forwards;
+}
+
+.sg-warning__border {
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+  opacity: 0;
+  animation: sg-rule-grow 0.8s var(--ease-expo) 1.2s forwards;
+}
+
+@keyframes sg-shake-in {
+  0% { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes sg-rule-grow {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+/* ─── 通用动画 ─── */
+@keyframes sg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

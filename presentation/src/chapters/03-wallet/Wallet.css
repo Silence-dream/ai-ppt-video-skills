@@ -1,0 +1,807 @@
+/* wallet 章节样式 - 使用 terminal-green 主题 token，CSS 前缀 .wl- */
+.wl-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: 选择钱包工具 ─── */
+.wl-pick {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.wl-pick__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-pick__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-pick__title {
+  color: var(--text-2);
+}
+
+.wl-pick__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.wl-pick__card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.wl-pick__card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wl-pick__icon-box {
+  width: 48px;
+  height: 48px;
+}
+
+.wl-pick__name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.wl-pick__tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 2px;
+}
+
+.wl-pick__note {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-quart);
+}
+
+.wl-pick__note.visible {
+  opacity: 1;
+}
+
+/* ─── Step 1: 地址展示 ─── */
+.wl-addr {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.wl-addr__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-addr__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-addr__title {
+  color: var(--text-2);
+}
+
+.wl-addr__display {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+  margin-bottom: 48px;
+}
+
+.wl-addr__display.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wl-addr__label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.wl-addr__hex {
+  font-family: var(--font-mono);
+  font-size: 52px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 28px 48px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  display: inline-block;
+}
+
+.wl-addr__prefix {
+  color: var(--text-mute);
+}
+
+.wl-addr__body {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.wl-addr__dots {
+  color: var(--text-faint);
+  margin: 0 4px;
+}
+
+.wl-addr__note {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-quart);
+}
+
+.wl-addr__note.visible {
+  opacity: 1;
+}
+
+.wl-addr__note-line {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+
+.wl-addr__tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 12px;
+  border: 1px solid var(--rule);
+  margin: 0 6px;
+}
+
+/* ─── Step 2: 误区澄清 ─── */
+.wl-myth {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.wl-myth__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 64px;
+}
+
+.wl-myth__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-myth__title {
+  color: var(--text-2);
+}
+
+.wl-myth__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.wl-myth__wrong,
+.wl-myth__right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 48px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.wl-myth__wrong.visible,
+.wl-myth__right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wl-myth__wrong {
+  border-left: 4px solid #ff4141;
+}
+
+.wl-myth__right {
+  border-left: 4px solid var(--accent);
+}
+
+.wl-myth__cross {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  color: #ff4141;
+  text-shadow: 0 0 8px rgba(255, 65, 65, 0.5);
+}
+
+.wl-myth__check {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.wl-myth__text {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ─── Step 3: 类比图 ─── */
+.wl-analogy {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.wl-analogy__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-analogy__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-analogy__title {
+  color: var(--text-2);
+}
+
+.wl-analogy__body {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+}
+
+.wl-analogy__box {
+  flex: 1;
+  max-width: 360px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.wl-analogy__box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wl-analogy__box--right {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px var(--accent-soft);
+}
+
+.wl-analogy__svg {
+  margin-bottom: 8px;
+}
+
+.wl-analogy__label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.wl-analogy__label--accent {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.wl-analogy__sub {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.wl-analogy__cross {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: #ff4141;
+}
+
+.wl-analogy__check {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+/* ─── Step 4: 职责清单 ─── */
+.wl-duties {
+  width: 100%;
+  max-width: 900px;
+}
+
+.wl-duties__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-duties__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-duties__title {
+  color: var(--text-2);
+}
+
+.wl-duties__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wl-duties__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart),
+              opacity 0.4s var(--ease-quart);
+}
+
+.wl-duties__item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wl-duties__item.dim {
+  opacity: 0.3;
+}
+
+.wl-duties__index {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-faint);
+}
+
+.wl-duties__code {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--accent);
+  min-width: 160px;
+}
+
+.wl-duties__label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ─── Step 5: 类比强化 ─── */
+.wl-strong {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.wl-strong__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-strong__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-strong__title {
+  color: var(--text-2);
+}
+
+.wl-strong__content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+  margin-bottom: 40px;
+}
+
+.wl-strong__content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wl-strong__line {
+  margin-bottom: 16px;
+}
+
+.wl-strong__text {
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.wl-strong__diagram {
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-quart) 0.4s;
+}
+
+.wl-strong__diagram.visible {
+  opacity: 1;
+}
+
+/* ─── Step 6: 实操演示 ─── */
+.wl-import {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.wl-import__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-import__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-import__title {
+  color: var(--text-2);
+}
+
+.wl-import__flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.wl-import__step {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.wl-import__step.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wl-import__step--result {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-soft);
+}
+
+.wl-import__step-label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.wl-import__seed {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  padding: 8px 16px;
+  border: 1px dashed var(--rule);
+  letter-spacing: 1px;
+}
+
+.wl-import__seed-input {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  background: var(--surface-3);
+  padding: 8px 16px;
+  border: 1px solid var(--accent);
+}
+
+.wl-import__step-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.wl-import__arrow {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-quick) var(--ease-quart);
+}
+
+.wl-import__arrow.visible {
+  opacity: 1;
+}
+
+.wl-import__addr {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+/* ─── Step 7: 账户归属 ─── */
+.wl-own {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.wl-own__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-own__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-own__title {
+  color: var(--text-2);
+}
+
+.wl-own__content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.wl-own__content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wl-own__statement {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.wl-own__statement--accent {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  font-size: 44px;
+  margin-bottom: 48px;
+}
+
+.wl-own__apps {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.wl-own__app {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 8px 20px;
+}
+
+.wl-own__sep {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+}
+
+.wl-own__apps-note {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+/* ─── Step 8: 安全提醒 ─── */
+.wl-tips {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.wl-tips__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.wl-tips__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.wl-tips__title {
+  color: var(--text-2);
+}
+
+.wl-tips__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wl-tips__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 36px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-left: 4px solid #ff4141;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.wl-tips__item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wl-tips__redline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #ff4141;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.wl-tips__text {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.wl-tips__code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-left: auto;
+}
+
+/* ─── Step 9: 高风险警示 ─── */
+.wl-warn {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.wl-warn__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: #ff4141;
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+}
+
+.wl-warn__prompt {
+  color: #ff4141;
+  margin-right: 12px;
+}
+
+.wl-warn__title {
+  color: #ff4141;
+}
+
+.wl-warn__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.wl-warn__content.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wl-warn__icon-box {
+  animation: wl-pulse 2s ease-in-out infinite;
+}
+
+@keyframes wl-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+.wl-warn__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wl-warn__headline {
+  font-family: var(--font-display-cn);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.wl-warn__verdict {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: #ff4141;
+  text-shadow: 0 0 12px rgba(255, 65, 65, 0.5);
+}

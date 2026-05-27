@@ -1,0 +1,336 @@
+/* summary 章节样式 - 使用 terminal-green 主题 token */
+.sm-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: 核心观点 ─── */
+.sm-core {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.sm-core.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sm-core__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.sm-core__title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: var(--text-shadow);
+}
+
+.sm-core__highlight {
+  color: var(--accent);
+  display: inline-block;
+  position: relative;
+}
+
+.sm-core__highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  animation: sm-underline 0.8s var(--ease-quart) forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+@keyframes sm-underline {
+  to { transform: scaleX(1); }
+}
+
+.sm-core__subtitle {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: var(--text-2);
+  margin-top: 32px;
+}
+
+.sm-core__cursor {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--accent);
+  margin-top: 40px;
+  animation: sm-blink 1s step-end infinite;
+}
+
+@keyframes sm-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Step 1 & 2: 六个本质 ─── */
+.sm-essences {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.sm-essences__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 60px;
+}
+
+.sm-essences__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.sm-essences__title {
+  color: var(--text-2);
+}
+
+.sm-essences__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.sm-essences__card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.sm-essences__card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sm-essences__icon {
+  width: 64px;
+  height: 64px;
+}
+
+.sm-essences__icon-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sm-essences__label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.sm-essences__divider {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-faint);
+  letter-spacing: 4px;
+}
+
+.sm-essences__essence {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+/* ─── Step 3: 完整链路图 ─── */
+.sm-flow {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.sm-flow__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 60px;
+}
+
+.sm-flow__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.sm-flow__title {
+  color: var(--text-2);
+}
+
+.sm-flow__path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.sm-flow__node-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sm-flow__node {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.sm-flow__node.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sm-flow__node-index {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-faint);
+}
+
+.sm-flow__node-label {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.sm-flow__arrow {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-quick) var(--ease-quart);
+}
+
+.sm-flow__arrow.visible {
+  opacity: 1;
+}
+
+.sm-flow__footer {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  animation: sm-fadeIn 0.5s var(--ease-quart) 2.5s forwards;
+}
+
+/* ─── Step 4: 最终结论 ─── */
+.sm-conclusion {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.sm-conclusion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sm-conclusion__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.sm-conclusion__title {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: var(--text-shadow);
+}
+
+.sm-conclusion__highlight {
+  color: var(--accent);
+  font-size: 64px;
+}
+
+.sm-conclusion__checklist {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sm-conclusion__item {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--text-2);
+  opacity: 0;
+  animation: sm-checkItem 0.4s var(--ease-quart) forwards;
+}
+
+.sm-conclusion__item:nth-child(1) { animation-delay: 0.3s; }
+.sm-conclusion__item:nth-child(2) { animation-delay: 0.6s; }
+.sm-conclusion__item:nth-child(3) { animation-delay: 0.9s; }
+
+/* ─── 通用动画 ─── */
+@keyframes sm-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sm-checkItem {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

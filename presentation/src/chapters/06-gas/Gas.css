@@ -1,0 +1,477 @@
+/* gas 章节样式 - 使用 terminal-green 主题 token，前缀 .gs- */
+.gs-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── 共享：终端头部 ─── */
+.gs-hero__cmd,
+.gs-analogy__header,
+.gs-compare__header,
+.gs-tracker__header {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.gs-hero__prompt,
+.gs-analogy__prompt,
+.gs-compare__prompt,
+.gs-tracker__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.gs-hero__cmd-text,
+.gs-analogy__cmd,
+.gs-compare__cmd,
+.gs-tracker__cmd {
+  color: var(--text-2);
+}
+
+/* ─── 共享：底部注释 ─── */
+.gs-hero__sub,
+.gs-compare__note,
+.gs-tracker__tip {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-faint);
+  text-align: center;
+  opacity: 0;
+  animation: gs-fade-up 0.6s var(--ease-quart) 1.8s forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 0: Hero 标语
+ * ═══════════════════════════════════════════════════════════════ */
+.gs-hero {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.gs-hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gs-hero__title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 40px;
+  text-shadow: var(--text-shadow);
+}
+
+.gs-hero__accent {
+  color: var(--accent);
+  display: inline-block;
+  animation: gs-glow-pulse 2.4s var(--ease-quart) infinite;
+}
+
+.gs-hero__cursor {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--accent);
+  margin-top: 32px;
+  animation: gs-blink 1s step-end infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 1: 燃料费类比 — 油表 + 定义
+ * ═══════════════════════════════════════════════════════════════ */
+.gs-analogy {
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.gs-analogy.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gs-analogy__body {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* 油表 */
+.gs-analogy__gauge-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gs-analogy__gauge {
+  display: block;
+}
+
+.gs-analogy__gauge-fill {
+  animation: gs-gauge-fill 1.8s var(--ease-expo) 0.4s forwards;
+}
+
+.gs-analogy__glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-glow) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  animation: gs-glow-in 1.2s var(--ease-quart) 1s forwards;
+  pointer-events: none;
+}
+
+/* 定义列表 */
+.gs-analogy__defs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+}
+
+.gs-analogy__def {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.gs-analogy__def--1 {
+  animation: gs-slide-in 0.5s var(--ease-quart) 0.6s forwards;
+}
+.gs-analogy__def--2 {
+  animation: gs-slide-in 0.5s var(--ease-quart) 1.0s forwards;
+}
+.gs-analogy__def--3 {
+  animation: gs-slide-in 0.5s var(--ease-quart) 1.4s forwards;
+}
+
+.gs-analogy__eq {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.gs-analogy__def-label {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.gs-analogy__def-desc {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 2: 普通转账 vs Swap 对比
+ * ═══════════════════════════════════════════════════════════════ */
+.gs-compare {
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.gs-compare.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gs-compare__body {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.gs-compare__row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.gs-compare__info {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.gs-compare__label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.gs-compare__desc {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.gs-compare__bar-track {
+  flex: 1;
+  height: 40px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+
+.gs-compare__bar {
+  height: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.gs-compare__bar--0 {
+  animation: gs-bar-grow 1.0s var(--ease-expo) 0.4s forwards;
+}
+
+.gs-compare__bar--1 {
+  animation: gs-bar-grow 1.4s var(--ease-expo) 0.8s forwards;
+  box-shadow: inset 0 0 20px var(--accent-glow);
+}
+
+.gs-compare__gas {
+  width: 160px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  opacity: 0;
+  animation: gs-fade-up 0.5s var(--ease-quart) 1.6s forwards;
+}
+
+.gs-compare__unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-mute);
+  margin-left: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 3: Etherscan Gas Tracker
+ * ═══════════════════════════════════════════════════════════════ */
+.gs-tracker {
+  width: 100%;
+  max-width: 1100px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.gs-tracker.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gs-tracker__panel {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.gs-tracker__title-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-3);
+}
+
+.gs-tracker__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.gs-tracker__dot--r { background: #ff5f57; }
+.gs-tracker__dot--y { background: #ffbd2e; }
+.gs-tracker__dot--g { background: #28ca42; }
+
+.gs-tracker__title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 12px;
+}
+
+.gs-tracker__content {
+  padding: 40px;
+}
+
+.gs-tracker__tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.gs-tracker__tier {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gs-tracker__tier--0 {
+  animation: gs-fade-up 0.5s var(--ease-quart) 0.3s forwards;
+}
+.gs-tracker__tier--1 {
+  animation: gs-fade-up 0.5s var(--ease-quart) 0.6s forwards;
+}
+.gs-tracker__tier--2 {
+  animation: gs-fade-up 0.5s var(--ease-quart) 0.9s forwards;
+}
+
+.gs-tracker__tier-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.gs-tracker__tier-gwei {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: var(--text-shadow);
+}
+
+.gs-tracker__tier-unit {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-mute);
+}
+
+.gs-tracker__tier-time {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-top: 12px;
+}
+
+.gs-tracker__meta {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  opacity: 0;
+  animation: gs-fade-up 0.5s var(--ease-quart) 1.2s forwards;
+}
+
+.gs-tracker__meta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-tracker__meta-key {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.gs-tracker__meta-val {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * 动画关键帧
+ * ═══════════════════════════════════════════════════════════════ */
+@keyframes gs-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes gs-glow-pulse {
+  0%, 100% { text-shadow: var(--text-shadow); }
+  50% { text-shadow: 0 0 24px var(--accent-glow), 0 0 48px rgba(65, 255, 151, 0.2); }
+}
+
+@keyframes gs-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gs-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gs-gauge-fill {
+  from { stroke-dashoffset: 377; }
+  to   { stroke-dashoffset: 160; }
+}
+
+@keyframes gs-glow-in {
+  from { opacity: 0; }
+  to   { opacity: 0.35; }
+}
+
+@keyframes gs-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

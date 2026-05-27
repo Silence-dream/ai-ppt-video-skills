@@ -1,0 +1,245 @@
+/* hook 章节样式 - 使用 terminal-green 主题 token */
+.hook-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: Hero 标语 ─── */
+.hook-hero {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.hook-hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hook-hero__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.hook-hero__title {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0;
+  text-shadow: var(--text-shadow);
+}
+
+.hook-hero__prefix {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.hook-hero__suffix {
+  color: var(--text-2);
+  font-size: 64px;
+}
+
+.hook-hero__cursor {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--accent);
+  margin-top: 40px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Step 1: 概念词云 ─── */
+.hook-concepts {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hook-concepts__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 60px;
+}
+
+.hook-concepts__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.hook-concepts__title {
+  color: var(--text-2);
+}
+
+.hook-concepts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.hook-concepts__item {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.hook-concepts__item.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hook-concepts__icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.hook-concepts__label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.hook-concepts__desc {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+.hook-concepts__question {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.5s var(--ease-quart) 2s forwards;
+}
+
+/* ─── Step 2: 链路图预览 ─── */
+.hook-flow {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.hook-flow__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 60px;
+}
+
+.hook-flow__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.hook-flow__title {
+  color: var(--text-2);
+}
+
+.hook-flow__path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.hook-flow__step-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hook-flow__step {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.hook-flow__step.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hook-flow__icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.hook-flow__label {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.hook-flow__arrow {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-quick) var(--ease-quart);
+}
+
+.hook-flow__arrow.visible {
+  opacity: 1;
+}
+
+.hook-flow__footer {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.5s var(--ease-quart) 2s forwards;
+}
+
+/* ─── 动画 ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

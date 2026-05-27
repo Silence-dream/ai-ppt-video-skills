@@ -1,0 +1,406 @@
+/* account 章节样式 - 使用 terminal-green 主题 token，CSS 前缀 .ac- */
+.ac-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: Hero 标语 ─── */
+.ac-hero {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.ac-hero__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+}
+
+.ac-hero__title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0 0 48px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+  text-shadow: var(--text-shadow);
+}
+
+.ac-hero__title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ac-hero__eq {
+  color: var(--accent);
+  margin: 0 16px;
+  font-family: var(--font-mono);
+}
+
+.ac-hero__addr-block {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.ac-hero__addr-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ac-hero__addr-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.ac-hero__addr {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 24px 40px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  display: inline-block;
+}
+
+.ac-hero__addr-prefix {
+  color: var(--text-mute);
+}
+
+.ac-hero__addr-hex {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ac-hero__addr-dots {
+  color: var(--text-faint);
+  margin: 0 4px;
+}
+
+.ac-hero__addr-analogy {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-2);
+  margin-top: 32px;
+  opacity: 0;
+  animation: ac-fadeIn 0.5s var(--ease-quart) 1.2s forwards;
+}
+
+/* ─── Step 1: 功能列表 ─── */
+.ac-funcs {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.ac-funcs__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.ac-funcs__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.ac-funcs__title {
+  color: var(--text-2);
+}
+
+.ac-funcs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.ac-funcs__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart),
+              opacity 0.4s var(--ease-quart);
+}
+
+.ac-funcs__item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ac-funcs__item.dim {
+  opacity: 0.35;
+}
+
+.ac-funcs__index {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-faint);
+}
+
+.ac-funcs__code {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--accent);
+  min-width: 120px;
+}
+
+.ac-funcs__label {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 500;
+  text-shadow: var(--text-shadow);
+}
+
+.ac-funcs__analogy {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-2);
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-quart);
+}
+
+.ac-funcs__analogy.visible {
+  opacity: 1;
+}
+
+/* ─── Step 2: 对比图 ─── */
+.ac-compare {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.ac-compare__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.ac-compare__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.ac-compare__title {
+  color: var(--text-2);
+}
+
+.ac-compare__body {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.ac-compare__col {
+  flex: 1;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.ac-compare__col.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ac-compare__col--left {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+}
+
+.ac-compare__col--right {
+  background: var(--surface-3);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 30px var(--accent-soft);
+}
+
+.ac-compare__col-label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+  margin-bottom: 8px;
+}
+
+.ac-compare__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 28px;
+}
+
+.ac-compare__row--highlight .ac-compare__key {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  font-size: 36px;
+}
+
+.ac-compare__key {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.ac-compare__sign {
+  color: var(--accent);
+}
+
+.ac-compare__note {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+  margin-top: 8px;
+}
+
+.ac-compare__note--accent {
+  color: var(--accent);
+}
+
+.ac-compare__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-quart);
+  text-shadow: var(--text-shadow);
+}
+
+.ac-compare__divider.visible {
+  opacity: 1;
+}
+
+/* ─── Step 3: 安全规则 ─── */
+.ac-security {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.ac-security__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.ac-security__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.ac-security__title {
+  color: var(--text-2);
+}
+
+.ac-security__rules {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ac-security__rule {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 40px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-slow) var(--ease-quart),
+              transform var(--dur-slow) var(--ease-quart);
+}
+
+.ac-security__rule.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ac-security__rule--ok {
+  border-left: 4px solid var(--accent);
+}
+
+.ac-security__rule--danger {
+  border-left: 4px solid #ff4141;
+  background: var(--surface-3);
+}
+
+.ac-security__icon {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.ac-security__rule--ok .ac-security__icon {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ac-security__rule--danger .ac-security__icon {
+  color: #ff4141;
+  text-shadow: 0 0 8px rgba(255, 65, 65, 0.5);
+}
+
+.ac-security__text {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.ac-security__detail {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: auto;
+}
+
+/* ─── 动画 ─── */
+@keyframes ac-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

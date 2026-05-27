@@ -1,0 +1,764 @@
+/* contract 章节样式 - 使用 terminal-green 主题 token，前缀 .ct- */
+.ct-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── 共享：终端头部 ─── */
+.ct-hero__cmd,
+.ct-mint__header,
+.ct-logic__header,
+.ct-result__header,
+.ct-remix__header,
+.ct-steps__header,
+.ct-resources__header {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+}
+
+.ct-hero__prompt,
+.ct-mint__prompt,
+.ct-logic__prompt,
+.ct-result__prompt,
+.ct-remix__prompt,
+.ct-steps__prompt,
+.ct-resources__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.ct-hero__cmd-text,
+.ct-mint__cmd,
+.ct-logic__cmd,
+.ct-result__cmd,
+.ct-remix__cmd,
+.ct-steps__cmd,
+.ct-resources__cmd {
+  color: var(--text-2);
+}
+
+/* ─── 共享：底部注释 ─── */
+.ct-hero__sub,
+.ct-mint__note,
+.ct-result__note,
+.ct-remix__tip,
+.ct-resources__footer {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-faint);
+  text-align: center;
+  opacity: 0;
+  animation: ct-fade-up 0.6s var(--ease-quart) 1.8s forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 0: Hero 标语
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-hero {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-hero__title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 40px;
+  text-shadow: var(--text-shadow);
+}
+
+.ct-hero__accent {
+  color: var(--accent);
+  display: inline-block;
+  animation: ct-glow-pulse 2.4s var(--ease-quart) infinite;
+}
+
+.ct-hero__cursor {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--accent);
+  margin-top: 32px;
+  animation: ct-blink 1s step-end infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 1: NFT Mint 流程
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-mint {
+  width: 100%;
+  max-width: 1300px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-mint.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-mint__flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.ct-mint__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 32px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  min-width: 140px;
+}
+
+.ct-mint__node--contract {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 24px rgba(65, 255, 151, 0.08);
+}
+
+.ct-mint__node--result {
+  border-color: var(--accent);
+}
+
+.ct-mint__node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ct-mint__node-label {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.ct-mint__node-label--accent {
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ct-mint__node-action {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+.ct-mint__arrow-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.ct-mint__eth {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.ct-mint__eth-val {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ct-mint__eth-unit {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.ct-mint__arrow-line {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 2px;
+  background: var(--rule);
+  position: relative;
+}
+
+.ct-mint__arrow-head {
+  position: absolute;
+  right: -8px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--accent);
+  line-height: 1;
+  top: -12px;
+}
+
+.ct-mint__nft-tag {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+  padding: 4px 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 2: 判断逻辑流程图
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-logic {
+  width: 100%;
+  max-width: 1000px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-logic.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-logic__body {
+  display: flex;
+  justify-content: center;
+}
+
+.ct-logic__svg {
+  display: block;
+}
+
+.ct-logic__node {
+  opacity: 0;
+}
+
+.ct-logic__node--0 { animation: ct-fade-up 0.5s var(--ease-quart) 0.2s forwards; }
+.ct-logic__node--1 { animation: ct-fade-up 0.5s var(--ease-quart) 0.7s forwards; }
+.ct-logic__node--2 { animation: ct-fade-up 0.5s var(--ease-quart) 1.2s forwards; }
+.ct-logic__node--3 { animation: ct-fade-up 0.5s var(--ease-quart) 1.7s forwards; }
+
+.ct-logic__line {
+  opacity: 0;
+}
+
+.ct-logic__line--0 { animation: ct-line-in 0.3s var(--ease-quart) 0.5s forwards; }
+.ct-logic__line--1 { animation: ct-line-in 0.3s var(--ease-quart) 1.0s forwards; }
+.ct-logic__line--2 { animation: ct-line-in 0.3s var(--ease-quart) 1.5s forwards; }
+.ct-logic__line--3 { animation: ct-line-in 0.3s var(--ease-quart) 2.0s forwards; }
+
+.ct-logic__yes {
+  opacity: 0;
+}
+
+.ct-logic__yes--0 { animation: ct-fade-up 0.3s var(--ease-quart) 0.6s forwards; }
+.ct-logic__yes--1 { animation: ct-fade-up 0.3s var(--ease-quart) 1.1s forwards; }
+.ct-logic__yes--2 { animation: ct-fade-up 0.3s var(--ease-quart) 1.6s forwards; }
+.ct-logic__yes--3 { animation: ct-fade-up 0.3s var(--ease-quart) 2.1s forwards; }
+
+.ct-logic__no {
+  opacity: 0;
+}
+
+.ct-logic__no--0 { animation: ct-fade-up 0.3s var(--ease-quart) 0.8s forwards; }
+.ct-logic__no--1 { animation: ct-fade-up 0.3s var(--ease-quart) 1.3s forwards; }
+.ct-logic__no--2 { animation: ct-fade-up 0.3s var(--ease-quart) 1.8s forwards; }
+.ct-logic__no--3 { animation: ct-fade-up 0.3s var(--ease-quart) 2.3s forwards; }
+
+.ct-logic__result {
+  opacity: 0;
+  animation: ct-fade-up 0.5s var(--ease-quart) 2.4s both;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 3: 执行结果
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-result {
+  width: 100%;
+  max-width: 1100px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-result.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-result__body {
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+  margin-bottom: 40px;
+}
+
+.ct-result__terminal {
+  flex: 1;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ct-result__line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.ct-result__line--1 { animation: ct-slide-in 0.4s var(--ease-quart) 0.3s forwards; }
+.ct-result__line--2 { animation: ct-slide-in 0.4s var(--ease-quart) 0.6s forwards; }
+.ct-result__line--3 { animation: ct-slide-in 0.4s var(--ease-quart) 0.9s forwards; }
+.ct-result__line--4 { animation: ct-slide-in 0.4s var(--ease-quart) 1.2s forwards; }
+.ct-result__line--5 { animation: ct-slide-in 0.4s var(--ease-quart) 1.5s forwards; }
+
+.ct-result__key {
+  color: var(--text-mute);
+  min-width: 100px;
+}
+
+.ct-result__val {
+  color: var(--text-2);
+}
+
+.ct-result__status {
+  color: var(--accent);
+  font-weight: 700;
+  text-shadow: var(--text-shadow);
+}
+
+.ct-result__nft-card {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--accent);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: ct-scale-in 0.6s var(--ease-quart) 1.0s forwards;
+  box-shadow: 0 0 30px rgba(65, 255, 151, 0.08);
+}
+
+.ct-result__nft-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ct-result__nft-visual svg {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+.ct-result__nft-id {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ct-result__nft-owner {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+.ct-result__nft-owner-addr {
+  color: var(--text-2);
+  margin-left: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 4: Remix IDE 模拟
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-remix {
+  width: 100%;
+  max-width: 1300px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-remix.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-remix__browser {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.ct-remix__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-3);
+}
+
+.ct-remix__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.ct-remix__dot--r { background: #ff5f57; }
+.ct-remix__dot--y { background: #ffbd2e; }
+.ct-remix__dot--g { background: #28ca42; }
+
+.ct-remix__url {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ct-remix__url-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-mute);
+  background: var(--surface);
+  padding: 4px 16px;
+  border: 1px solid var(--rule);
+}
+
+.ct-remix__ide {
+  display: flex;
+  height: 380px;
+}
+
+.ct-remix__sidebar {
+  width: 48px;
+  background: var(--surface-3);
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+  gap: 20px;
+}
+
+.ct-remix__sidebar-icon {
+  opacity: 0.4;
+}
+
+.ct-remix__sidebar-icon--active {
+  opacity: 1;
+}
+
+.ct-remix__files {
+  width: 180px;
+  border-right: 1px solid var(--rule);
+  padding: 16px;
+}
+
+.ct-remix__file-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.ct-remix__file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+.ct-remix__file--open {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.ct-remix__file-icon {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.ct-remix__editor {
+  flex: 1;
+  padding: 20px 28px;
+  background: var(--surface);
+}
+
+.ct-remix__code {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ct-remix__code-line {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+.ct-remix__code-line--hl {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ct-remix__kw {
+  color: var(--accent);
+}
+
+.ct-remix__fn {
+  color: var(--text);
+}
+
+.ct-remix__num {
+  color: #ffbd2e;
+}
+
+.ct-remix__cm {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 5: Remix 使用步骤
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-steps {
+  width: 100%;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-steps.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-steps__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ct-steps__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.ct-steps__item--0 { animation: ct-slide-in 0.4s var(--ease-quart) 0.2s forwards; }
+.ct-steps__item--1 { animation: ct-slide-in 0.4s var(--ease-quart) 0.5s forwards; }
+.ct-steps__item--2 { animation: ct-slide-in 0.4s var(--ease-quart) 0.8s forwards; }
+.ct-steps__item--3 { animation: ct-slide-in 0.4s var(--ease-quart) 1.1s forwards; }
+.ct-steps__item--4 { animation: ct-slide-in 0.4s var(--ease-quart) 1.4s forwards; }
+
+.ct-steps__num {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  min-width: 48px;
+}
+
+.ct-steps__line {
+  width: 32px;
+  height: 2px;
+  background: var(--rule);
+  flex-shrink: 0;
+}
+
+.ct-steps__content {
+  flex: 1;
+}
+
+.ct-steps__label {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.ct-steps__desc {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * Step 6: 学习资源
+ * ═══════════════════════════════════════════════════════════════ */
+.ct-resources {
+  width: 100%;
+  max-width: 1000px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ct-resources.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ct-resources__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.ct-resources__card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: 36px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ct-resources__card--0 { animation: ct-fade-up 0.5s var(--ease-quart) 0.3s forwards; }
+.ct-resources__card--1 { animation: ct-fade-up 0.5s var(--ease-quart) 0.7s forwards; }
+
+.ct-resources__card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ct-resources__card-icon {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.ct-resources__card-label {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+}
+
+.ct-resources__card-url {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  display: inline-block;
+}
+
+.ct-resources__card-desc {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-mute);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * 动画关键帧
+ * ═══════════════════════════════════════════════════════════════ */
+@keyframes ct-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes ct-glow-pulse {
+  0%, 100% { text-shadow: var(--text-shadow); }
+  50% { text-shadow: 0 0 24px var(--accent-glow), 0 0 48px rgba(65, 255, 151, 0.2); }
+}
+
+@keyframes ct-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ct-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ct-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ct-line-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

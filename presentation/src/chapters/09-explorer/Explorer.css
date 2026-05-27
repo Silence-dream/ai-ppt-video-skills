@@ -1,0 +1,301 @@
+/* explorer 章节样式 - terminal-green 主题，独立前缀 .ex- */
+.ex-chapter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Step 0: Hero 标语 ─── */
+.ex-hero {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ex-hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ex-hero__label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.ex-hero__title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0;
+  text-shadow: var(--text-shadow);
+}
+
+.ex-hero__subtitle {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: var(--text-2);
+  margin-top: 32px;
+  letter-spacing: 1px;
+}
+
+/* 搜索栏动画 */
+.ex-hero__search {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  opacity: 0;
+  animation: ex-fadeIn 0.6s var(--ease-quart) 0.8s forwards;
+}
+
+.ex-hero__search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  min-width: 480px;
+}
+
+.ex-hero__search-icon {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ex-hero__search-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ex-hero__search-text {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-2);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--accent);
+  animation: ex-typing 2s steps(20) 1.2s forwards,
+             ex-cursor-blink 0.6s step-end infinite;
+  width: 0;
+}
+
+@keyframes ex-typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes ex-cursor-blink {
+  0%, 100% { border-right-color: var(--accent); }
+  50% { border-right-color: transparent; }
+}
+
+/* ─── Step 1: 可查看内容清单 ─── */
+.ex-list {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.ex-list__header {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-mute);
+  margin-bottom: 48px;
+}
+
+.ex-list__prompt {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.ex-list__cmd {
+  color: var(--text-2);
+}
+
+.ex-list__browsers {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.ex-list__browser {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-2);
+  padding: 10px 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.ex-list__browser.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ex-list__browser--active {
+  color: var(--text);
+  border-color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+
+.ex-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ex-list__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-quick) var(--ease-quart),
+              transform var(--dur-quick) var(--ease-quart);
+}
+
+.ex-list__item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ex-list__item--dim {
+  opacity: 0.3;
+  filter: grayscale(0.5);
+}
+
+.ex-list__item--dim.visible {
+  opacity: 0.3;
+}
+
+.ex-list__item-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ex-list__item-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ex-list__item-label {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  min-width: 200px;
+}
+
+.ex-list__item-desc {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+/* ─── Step 2: 核心观点 ─── */
+.ex-insight {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.ex-insight__quote {
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  text-shadow: var(--text-shadow);
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base) var(--ease-quart),
+              transform var(--dur-base) var(--ease-quart);
+}
+
+.ex-insight__quote.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ex-insight__highlight {
+  color: var(--accent);
+  position: relative;
+}
+
+.ex-insight__highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: ex-underline 0.6s var(--ease-quart) 0.8s forwards;
+}
+
+@keyframes ex-underline {
+  to { transform: scaleX(1); }
+}
+
+.ex-insight__divider {
+  width: 120px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 32px;
+  opacity: 0;
+  animation: ex-fadeIn 0.5s var(--ease-quart) 1.2s forwards;
+}
+
+.ex-insight__sub {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-2);
+  line-height: 1.6;
+  opacity: 0;
+  animation: ex-fadeIn 0.5s var(--ease-quart) 1.5s forwards;
+}
+
+/* ─── 通用动画 ─── */
+@keyframes ex-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
