@@ -33,3 +33,5 @@ next-env.d.ts
 
 # Claude
 .claude/settings.local.json
+context-engine-combined.log
+context-engine-error.log
