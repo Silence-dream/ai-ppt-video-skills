@@ -83,21 +83,30 @@ if [[ -d "$TARGET" && -n "$(ls -A "$TARGET" 2>/dev/null || true)" ]]; then
   exit 1
 fi
 
-if ! command -v npm >/dev/null; then
-  echo "✗ 需要 npm，但在 PATH 里没找到。" >&2
-  exit 1
+if ! command -v pnpm >/dev/null; then
+  echo "▸ 未检测到 pnpm,正在全局安装..."
+  if ! command -v npm >/dev/null; then
+    echo "✗ 需要 npm 才能安装 pnpm,但在 PATH 里没找到。" >&2
+    exit 1
+  fi
+  npm install -g pnpm
+  if ! command -v pnpm >/dev/null; then
+    echo "✗ pnpm 安装失败,请手动安装: npm install -g pnpm" >&2
+    exit 1
+  fi
+  echo "✓ pnpm 安装完成"
 fi
 
 echo "▸ 在 $TARGET 创建 Vite + React + TS 项目"
 echo "▸ 使用主题：$THEME"
-npm create vite@latest "$TARGET" -- --template react-ts >/dev/null
+pnpm create vite@latest "$TARGET" -- --template react-ts >/dev/null
 
 cd "$TARGET"
 echo "▸ 安装依赖（可能要等一会）..."
-npm install >/dev/null 2>&1
+pnpm install >/dev/null 2>&1
 
 echo "▸ 安装 tsx（用于 extract-narrations 脚本）..."
-npm install --save-dev tsx >/dev/null 2>&1
+pnpm add -D tsx >/dev/null 2>&1
 
 echo "▸ 用演示骨架替换默认 boilerplate"
 
@@ -173,7 +182,7 @@ fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");
 
 # 跑一次 typecheck 确认接线 OK
 echo "▸ 跑 typecheck ..."
-if npx tsc --noEmit; then
+if pnpm exec tsc --noEmit; then
   echo "✓ typecheck 通过"
 else
   echo "✗ typecheck 失败 —— 请看上面的错误" >&2
@@ -185,7 +194,7 @@ cat <<EOF
 ✓ 完成。下一步：
 
   1. cd $TARGET
-  2. npm run dev      # 默认 http://localhost:5174（被占会自动换端口）
+  2. pnpm run dev      # 默认 http://localhost:5174（被占会自动换端口）
 
 当前主题：${THEME}（见 .theme）
 
@@ -211,8 +220,8 @@ cat <<EOF
 
 音频合成（可选，录制前做）：
 
-  npm run extract-narrations    # 扫所有章节 narrations.ts → audio-segments.json
-  npm run synthesize-audio      # 调 mmx-cli 合成 → public/audio/<id>/<step>.mp3
+  pnpm run extract-narrations    # 扫所有章节 narrations.ts → audio-segments.json
+  pnpm run synthesize-audio      # 调 mmx-cli 合成 → public/audio/<id>/<step>.mp3
                                 # （没装 mmx 见 references/AUDIO.md）
 
 写章节时必读（单一入口，路径在 SKILL 仓库内）：

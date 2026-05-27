@@ -378,9 +378,9 @@ BroadcastChannel 同步 + 配置 Vite SPA 路由），然后进入 Phase 5 录�
 
 ```bash
 cd presentation
-npm run extract-narrations   # 扫所有 narrations.ts → audio-segments.json
+pnpm run extract-narrations   # 扫所有 narrations.ts → audio-segments.json
 # 让用户扫一眼 audio-segments.json 确认文本对
-npm run synthesize-audio     # 调 mmx 串行合成；增量、跳过已存在
+pnpm run synthesize-audio     # 调 mmx 串行合成；增量、跳过已存在
 ```
 
 合成完告诉用户：输出位置 / 总段数 / 哪些段时长异常（太长 = 该 step 拆

@@ -286,7 +286,7 @@ cp -r monochrome-print my-theme
 ```bash
 bash scripts/scaffold.sh /tmp/test-theme --theme=my-theme
 cd /tmp/test-theme
-npm run dev
+pnpm run dev
 ```
 
 把 demo 每一步点完。检查：

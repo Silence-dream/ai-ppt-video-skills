@@ -125,7 +125,7 @@ API Key 在 https://platform.xiaomimimo.com 获取。
 
 ```bash
 cd presentation
-npm run extract-narrations
+pnpm run extract-narrations
 ```
 
 这会扫所有章节的 `narrations.ts`，按 `chapters.ts` 注册顺序生成
@@ -147,9 +147,9 @@ npm run extract-narrations
 ### 3. 合成
 
 ```bash
-npm run synthesize-audio              # 增量：跳过已存在的文件
-npm run synthesize-audio -- --force   # 全部重合成
-npm run synthesize-audio -- --voice=茉莉  # 指定音色
+pnpm run synthesize-audio              # 增量：跳过已存在的文件
+pnpm run synthesize-audio -- --force   # 全部重合成
+pnpm run synthesize-audio -- --voice=茉莉  # 指定音色
 ```
 
 脚本**串行**调 API（避免 rate limit），**自动跳过已存在文件**（断点续合
@@ -234,7 +234,7 @@ Auto 模式首次需要按一次 `Space` 启动（绕过浏览器自动播放限
 | `MiMo API 429` | 触发 rate limit，脚本串行调用一般不会；等一会重试 |
 | `chapter id "X" registered but no matching folder found` | 章节文件夹应命名为 `NN-<id>`；id 必须等于 chapters.ts 里注册的 |
 | `narrations.ts in X must export an array named "narrations"` | 该章节的 narrations.ts 没 export 名为 narrations 的数组 |
-| 中间断了几条没合成 | `npm run synthesize-audio` 重跑 —— 已存在文件会跳过 |
+| 中间断了几条没合成 | `pnpm run synthesize-audio` 重跑 —— 已存在文件会跳过 |
 | 中文音色不自然 | 试试 `--voice=茉莉` 或 `--voice=苏打`，不同音色效果不同 |
 | 整段合成被截断 | 单段过长。在 narrations.ts 里把这条拆成两条（也意味着该 step 应该拆成两个 step） |
 | 浏览器没播音频 | Auto / Audio 模式下首次需要用户手势——确认你按了 SPACE 启动 Auto，或者点过页面 |
