@@ -1,0 +1,66 @@
+[
+  {
+    "layout": "TitleSlide",
+    "title": "演示标题",
+    "subtitle": "副标题或日期",
+    "chapter": ""
+  },
+  {
+    "layout": "ChapterDivider",
+    "chapterNum": "01",
+    "title": "第一章标题",
+    "chapter": "第一章标题"
+  },
+  {
+    "layout": "ContentBlock",
+    "title": "要点标题",
+    "paragraphs": [
+      "这里是正文内容，替换为你的口播稿要点。",
+      "每段控制在 2-3 句话，保持简洁有力。"
+    ],
+    "chapter": "第一章标题"
+  },
+  {
+    "layout": "PullQuote",
+    "quote": "一句值得放大的金句或核心观点。",
+    "source": "来源说明",
+    "chapter": "第一章标题"
+  },
+  {
+    "layout": "ChapterDivider",
+    "chapterNum": "02",
+    "title": "第二章标题",
+    "chapter": "第二章标题"
+  },
+  {
+    "layout": "LedgerList",
+    "title": "要点列表",
+    "items": [
+      { "title": "要点一", "desc": "简要说明" },
+      { "title": "要点二", "desc": "简要说明" },
+      { "title": "要点三", "desc": "简要说明" }
+    ],
+    "chapter": "第二章标题"
+  },
+  {
+    "layout": "DataShowcase",
+    "title": "关键数据",
+    "metrics": [
+      { "value": "95%", "label": "指标一" },
+      { "value": "3.2x", "label": "指标二" },
+      { "value": "10M+", "label": "指标三" }
+    ],
+    "chapter": "第二章标题"
+  },
+  {
+    "layout": "ClosingSlide",
+    "title": "总结",
+    "points": [
+      "核心要点回顾一",
+      "核心要点回顾二",
+      "核心要点回顾三"
+    ],
+    "signOff": "感谢观看",
+    "chapter": ""
+  }
+]

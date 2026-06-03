@@ -1,0 +1,60 @@
+/* ============================================
+   Theme Presets — Swiss Series
+   ============================================ */
+
+[data-accent="ikb"] {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #002FA7;
+  --accent-on: #ffffff;
+}
+
+[data-accent="lemon"] {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #FFD500;
+  --accent-on: #0a0a0a;
+}
+
+[data-accent="lemon-green"] {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #C5E803;
+  --accent-on: #0a0a0a;
+}
+
+[data-accent="safety-orange"] {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #FF6B35;
+  --accent-on: #ffffff;
+}
+
+/* ============================================
+   Shared Variables
+   ============================================ */
+
+[data-accent] {
+  --slide-bg: var(--paper);
+  --slide-fg: var(--ink);
+  --transition-slide: 600ms ease;
+  --transition-content: 400ms ease;
+  --progress-height: 3px;
+  --progress-color: var(--accent);
+
+  --sans: "Inter", "Helvetica Neue", "PingFang SC", sans-serif;
+  --sans-zh: "Noto Sans SC", "PingFang SC", sans-serif;
+  --mono: "IBM Plex Mono", "Menlo", monospace;
+}

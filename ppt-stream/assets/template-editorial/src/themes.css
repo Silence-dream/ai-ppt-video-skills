@@ -1,0 +1,95 @@
+/* ============================================
+   Theme Presets — Ink Series (Editorial)
+   ============================================ */
+
+[data-theme="ink-classic"] {
+  --paper: #f1efea;
+  --paper-2: #e8e4dc;
+  --ink: #0a0a0b;
+  --muted: #68625a;
+  --line: rgba(10,10,11,.22);
+  --accent: #111111;
+  --accent-soft: #d8d2c6;
+}
+
+[data-theme="indigo-porcelain"] {
+  --paper: #f1f3f5;
+  --paper-2: #e5ebef;
+  --ink: #0a1f3d;
+  --muted: #5f6d78;
+  --line: rgba(10,31,61,.20);
+  --accent: #315d93;
+  --accent-soft: #d7e1ec;
+}
+
+[data-theme="forest-ink"] {
+  --paper: #f5f1e8;
+  --paper-2: #e8dfcf;
+  --ink: #1a2e1f;
+  --muted: #5d665d;
+  --line: rgba(22,37,27,.22);
+  --accent: #2e6b4f;
+  --accent-soft: #d4dfd2;
+}
+
+[data-theme="kraft-paper"] {
+  --paper: #eedfc7;
+  --paper-2: #dfc9a8;
+  --ink: #2a1e13;
+  --muted: #755f49;
+  --line: rgba(42,30,19,.24);
+  --accent: #9b5a2e;
+  --accent-soft: #d5b58f;
+}
+
+[data-theme="dune"] {
+  --paper: #f0e6d2;
+  --paper-2: #ded0b7;
+  --ink: #1f1a14;
+  --muted: #6f6557;
+  --line: rgba(31,26,20,.22);
+  --accent: #8f7650;
+  --accent-soft: #d4c2a4;
+}
+
+[data-theme="midnight-ink"] {
+  --paper: #0e0d0c;
+  --paper-2: #1a1714;
+  --ink: #ece2cf;
+  --muted: #9a8c75;
+  --line: rgba(236,226,207,.22);
+  --accent: #d4a04a;
+  --accent-soft: #3a2a14;
+}
+
+/* Midnight Ink overrides */
+[data-theme="midnight-ink"] .grain {
+  opacity: .26;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(rgba(255,244,214,.10) 1px, transparent 1px);
+}
+
+[data-theme="midnight-ink"] .slide-bg {
+  background:
+    radial-gradient(80% 50% at 28% 16%, rgba(212,160,74,.12), transparent 64%),
+    radial-gradient(70% 60% at 80% 86%, rgba(60,40,20,.20), transparent 72%),
+    linear-gradient(180deg, rgba(236,226,207,.02), rgba(0,0,0,.32));
+}
+
+/* ============================================
+   Shared Variables
+   ============================================ */
+
+[data-theme] {
+  --slide-bg: var(--paper);
+  --slide-fg: var(--ink);
+  --transition-slide: 600ms ease;
+  --transition-content: 400ms ease;
+  --progress-height: 3px;
+  --progress-color: var(--accent);
+
+  --serif-zh: "Noto Serif SC", "Songti SC", serif;
+  --serif-en: "Playfair Display", Georgia, serif;
+  --sans-zh: "Noto Sans SC", "PingFang SC", sans-serif;
+  --mono: "IBM Plex Mono", "Menlo", monospace;
+}

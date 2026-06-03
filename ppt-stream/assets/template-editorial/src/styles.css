@@ -1,0 +1,537 @@
+/* ============================================
+   Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--serif-zh);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   Presentation Container
+   ============================================ */
+
+.presentation {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ============================================
+   Slide Base
+   ============================================ */
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--slide-bg);
+  overflow: hidden;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 100%;
+  padding: 48px;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+.display {
+  font-family: var(--serif-en);
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.title {
+  font-family: var(--serif-en);
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-family: var(--sans-zh);
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.body {
+  font-family: var(--serif-zh);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.body p {
+  margin-bottom: 1.5em;
+}
+
+/* ============================================
+   Title Slide
+   ============================================ */
+
+.slide-title {
+  text-align: center;
+}
+
+.slide-title .display {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   Pull Quote
+   ============================================ */
+
+.slide-quote .pull-quote {
+  font-family: var(--serif-en);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+  border-left: 4px solid var(--accent);
+  padding-left: 32px;
+  max-width: 720px;
+}
+
+.slide-quote .quote-source {
+  display: block;
+  font-family: var(--sans-zh);
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 24px;
+  font-style: normal;
+}
+
+/* ============================================
+   Image Hero
+   ============================================ */
+
+.slide-hero {
+  padding: 0;
+}
+
+.slide-hero .hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.6) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 64px;
+  z-index: 2;
+}
+
+.slide-hero .hero-overlay .title {
+  color: #fff;
+  font-size: clamp(32px, 4vw, 64px);
+}
+
+/* ============================================
+   Split View
+   ============================================ */
+
+.slide-split {
+  display: flex;
+}
+
+.slide-split .split-text {
+  flex: 1;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-split .split-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.slide-split .split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-split .split-text::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  right: 50%;
+  width: 1px;
+  background: var(--accent);
+}
+
+/* ============================================
+   Ledger List
+   ============================================ */
+
+.slide-list .ledger {
+  list-style: none;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.slide-list .ledger li {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.slide-list .ledger-num {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--accent);
+  min-width: 32px;
+}
+
+.slide-list .ledger-title {
+  font-family: var(--serif-zh);
+  font-size: 24px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.slide-list .ledger-desc {
+  font-family: var(--sans-zh);
+  font-size: 18px;
+  color: var(--muted);
+  flex: 2;
+}
+
+/* ============================================
+   Chapter Divider
+   ============================================ */
+
+.slide-chapter {
+  text-align: center;
+}
+
+.slide-chapter .chapter-num {
+  font-family: var(--mono);
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 400;
+  color: var(--accent-soft);
+  line-height: 1;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.slide-chapter .chapter-title {
+  font-family: var(--serif-en);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================
+   Data Showcase
+   ============================================ */
+
+.slide-data .data-grid {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.slide-data .data-item {
+  text-align: center;
+}
+
+.slide-data .data-num {
+  font-family: var(--mono);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+
+.slide-data .data-label {
+  font-family: var(--sans-zh);
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 12px;
+  display: block;
+}
+
+/* ============================================
+   Closing Slide
+   ============================================ */
+
+.slide-closing .closing-points {
+  list-style: none;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.slide-closing .closing-points li {
+  font-family: var(--serif-zh);
+  font-size: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.slide-closing .sign-off {
+  font-family: var(--serif-en);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: var(--progress-height);
+  background: var(--progress-color);
+  transition: width 0.3s ease;
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.presentation:hover .progress-bar {
+  opacity: 1;
+}
+
+/* ============================================
+   Chapter Subtitle
+   ============================================ */
+
+.chapter-subtitle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.chapter-subtitle.visible {
+  opacity: 1;
+}
+
+.chapter-subtitle-num {
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+/* ============================================
+   Navigation Hint
+   ============================================ */
+
+.nav-hint {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.presentation:hover .nav-hint {
+  opacity: 0.6;
+}
+
+.nav-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11px;
+  margin: 0 2px;
+}
+
+/* ============================================
+   Slide Nav (底部幻灯片导航)
+   ============================================ */
+
+.slide-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding: 10px 20px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.presentation:hover .slide-nav {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slide-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slide-nav-chapter-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-right: 2px;
+}
+
+.slide-nav-chapter-num {
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.slide-nav-items {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.slide-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slide-nav-dot:hover {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+.slide-nav-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* ============================================
+   Slide Animations
+   ============================================ */
+
+@keyframes slideInFromRight {
+  from { transform: translateX(60px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-60px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.slide-enter {
+  animation: slideInFromRight var(--transition-slide) forwards;
+}
+
+.slide-enter-back {
+  animation: slideInFromLeft var(--transition-slide) forwards;
+}
+
+/* Content stagger reveal */
+.slide-content li,
+.slide-content .data-item,
+.slide-content .closing-points li {
+  opacity: 0;
+  animation: fadeInUp var(--transition-content) forwards;
+}
+
+.slide-content li:nth-child(1),
+.slide-content .data-item:nth-child(1) { animation-delay: 0.1s; }
+.slide-content li:nth-child(2),
+.slide-content .data-item:nth-child(2) { animation-delay: 0.2s; }
+.slide-content li:nth-child(3),
+.slide-content .data-item:nth-child(3) { animation-delay: 0.3s; }
+.slide-content li:nth-child(4),
+.slide-content .data-item:nth-child(4) { animation-delay: 0.4s; }
+.slide-content li:nth-child(5),
+.slide-content .data-item:nth-child(5) { animation-delay: 0.5s; }
+.slide-content li:nth-child(6),
+.slide-content .data-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

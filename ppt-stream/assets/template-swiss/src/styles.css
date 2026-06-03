@@ -1,0 +1,610 @@
+/* ============================================
+   Base Styles — Swiss Series
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   Presentation Container
+   ============================================ */
+
+.presentation {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ============================================
+   Slide Base
+   ============================================ */
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--slide-bg);
+  overflow: hidden;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 100%;
+  padding: 48px;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+.hero-title {
+  font-family: var(--sans);
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.h-statement {
+  font-family: var(--sans);
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 200;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 80%;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-family: var(--sans-zh);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: var(--grey-3);
+  margin-top: 16px;
+}
+
+.body {
+  font-family: var(--sans-zh);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.body p {
+  margin-bottom: 1.5em;
+}
+
+/* ============================================
+   Title Slide (Swiss)
+   ============================================ */
+
+.slide-title {
+  text-align: left;
+  padding-left: 10%;
+}
+
+.slide-title .accent-bar {
+  width: 48px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 32px;
+}
+
+.slide-title .hero-title {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   Statement Slide
+   ============================================ */
+
+.slide-statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   Card Grid
+   ============================================ */
+
+.slide-cards .card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--grey-2);
+  margin-top: 32px;
+}
+
+.slide-cards .card-fill {
+  background: var(--paper);
+  padding: 40px;
+}
+
+.slide-cards .card-fill h3 {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.slide-cards .card-fill p {
+  font-family: var(--sans-zh);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--grey-3);
+}
+
+/* ============================================
+   KPI Tower
+   ============================================ */
+
+.slide-kpi .kpi-row {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 48px;
+}
+
+.slide-kpi .kpi-item {
+  text-align: center;
+  padding: 0 48px;
+  border-left: 1px solid var(--grey-2);
+}
+
+.slide-kpi .kpi-item:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.slide-kpi .kpi-value {
+  font-family: var(--sans);
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 200;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+
+.slide-kpi .kpi-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey-3);
+  margin-top: 12px;
+  display: block;
+}
+
+/* ============================================
+   Comparison Slide
+   ============================================ */
+
+.slide-compare .compare-grid {
+  display: flex;
+  gap: 0;
+  margin-top: 32px;
+}
+
+.slide-compare .compare-col {
+  flex: 1;
+  padding: 0 32px;
+}
+
+.slide-compare .compare-col:first-child {
+  padding-left: 0;
+}
+
+.slide-compare .compare-col:last-child {
+  padding-right: 0;
+}
+
+.slide-compare .compare-divider {
+  width: 1px;
+  background: var(--grey-2);
+}
+
+.slide-compare .compare-col h3 {
+  font-family: var(--sans);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.slide-compare .compare-col p {
+  font-family: var(--sans-zh);
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: var(--grey-3);
+}
+
+/* ============================================
+   HBar Chart
+   ============================================ */
+
+.slide-chart .hbar-chart {
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.slide-chart .hbar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.slide-chart .hbar-label {
+  font-family: var(--sans-zh);
+  font-size: 14px;
+  color: var(--grey-3);
+  min-width: 80px;
+  text-align: right;
+}
+
+.slide-chart .hbar-track {
+  flex: 1;
+  height: 24px;
+  background: var(--grey-1);
+  position: relative;
+}
+
+.slide-chart .hbar-fill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  animation: barGrow 0.8s ease forwards;
+}
+
+.slide-chart .hbar-value {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 48px;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.slide-chart .hbar-row:nth-child(2) .hbar-fill { animation-delay: 0.2s; }
+.slide-chart .hbar-row:nth-child(3) .hbar-fill { animation-delay: 0.4s; }
+.slide-chart .hbar-row:nth-child(4) .hbar-fill { animation-delay: 0.6s; }
+
+/* ============================================
+   Chapter Divider (Swiss)
+   ============================================ */
+
+.slide-chapter {
+  text-align: left;
+  padding-left: 10%;
+}
+
+.slide-chapter .chapter-accent-block {
+  width: 64px;
+  height: 64px;
+  background: var(--accent);
+  margin-bottom: 32px;
+}
+
+.slide-chapter .chapter-num {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-3);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.slide-chapter .chapter-title {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================
+   Image Hero (Swiss)
+   ============================================ */
+
+.slide-hero .hero-frame {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--grey-2);
+  overflow: hidden;
+}
+
+.slide-hero .hero-frame img {
+  width: 100%;
+  display: block;
+}
+
+.slide-hero .hero-caption {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--grey-3);
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ============================================
+   Closing Slide (Swiss)
+   ============================================ */
+
+.slide-closing .closing-list {
+  list-style: none;
+  counter-reset: closing;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.slide-closing .closing-list li {
+  counter-increment: closing;
+  font-family: var(--sans-zh);
+  font-size: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--grey-2);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.slide-closing .closing-list li::before {
+  content: counter(closing, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  min-width: 24px;
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: var(--progress-height);
+  background: var(--progress-color);
+  transition: width 0.3s ease;
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.presentation:hover .progress-bar {
+  opacity: 1;
+}
+
+/* ============================================
+   Chapter Subtitle
+   ============================================ */
+
+.chapter-subtitle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.chapter-subtitle.visible {
+  opacity: 1;
+}
+
+.chapter-subtitle-num {
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+/* ============================================
+   Navigation Hint
+   ============================================ */
+
+.nav-hint {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--grey-3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.presentation:hover .nav-hint {
+  opacity: 0.6;
+}
+
+.nav-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--grey-2);
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 11px;
+  margin: 0 2px;
+}
+
+/* ============================================
+   Slide Nav (底部幻灯片导航)
+   ============================================ */
+
+.slide-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: var(--paper);
+  border-top: 1px solid var(--grey-2);
+  padding: 10px 20px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.presentation:hover .slide-nav {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slide-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slide-nav-chapter-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--grey-3);
+  white-space: nowrap;
+  margin-right: 2px;
+}
+
+.slide-nav-chapter-num {
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.slide-nav-items {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.slide-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--grey-2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slide-nav-dot:hover {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+.slide-nav-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* ============================================
+   Slide Animations
+   ============================================ */
+
+@keyframes slideInFromRight {
+  from { transform: translateX(60px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-60px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.slide-enter {
+  animation: slideInFromRight var(--transition-slide) forwards;
+}
+
+.slide-enter-back {
+  animation: slideInFromLeft var(--transition-slide) forwards;
+}
+
+/* Content stagger reveal */
+.slide-content .card-fill,
+.slide-content .kpi-item,
+.slide-content .closing-list li {
+  opacity: 0;
+  animation: fadeInUp var(--transition-content) forwards;
+}
+
+.slide-content .card-fill:nth-child(1),
+.slide-content .kpi-item:nth-child(1),
+.slide-content .closing-list li:nth-child(1) { animation-delay: 0.1s; }
+.slide-content .card-fill:nth-child(2),
+.slide-content .kpi-item:nth-child(2),
+.slide-content .closing-list li:nth-child(2) { animation-delay: 0.2s; }
+.slide-content .card-fill:nth-child(3),
+.slide-content .kpi-item:nth-child(3),
+.slide-content .closing-list li:nth-child(3) { animation-delay: 0.3s; }
+.slide-content .card-fill:nth-child(4),
+.slide-content .kpi-item:nth-child(4),
+.slide-content .closing-list li:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
